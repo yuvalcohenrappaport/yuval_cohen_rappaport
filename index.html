@@ -759,6 +759,22 @@
             stroke: var(--teal);
         }
 
+        .project-icon.ai {
+            background: var(--gold-light);
+        }
+
+        .project-icon.ai svg {
+            stroke: var(--gold);
+        }
+
+        .project-icon.science {
+            background: rgba(232, 77, 53, 0.1);
+        }
+
+        .project-icon.science svg {
+            stroke: var(--accent);
+        }
+
         .project-header-text h3 {
             font-family: 'Bricolage Grotesque', serif;
             font-size: 1.15rem;
@@ -812,13 +828,11 @@
             border-radius: 50%;
         }
 
-        .project-card:first-child .project-features li::before {
-            background: var(--accent);
-        }
-
-        .project-card:last-child .project-features li::before {
-            background: var(--teal);
-        }
+        .project-card:nth-child(1) .project-features li::before { background: var(--accent); }
+        .project-card:nth-child(2) .project-features li::before { background: var(--teal); }
+        .project-card:nth-child(3) .project-features li::before { background: var(--gold); }
+        .project-card:nth-child(4) .project-features li::before { background: var(--accent); }
+        .project-card:nth-child(5) .project-features li::before { background: var(--teal); }
 
         .project-tech {
             display: flex;
@@ -1544,6 +1558,123 @@
                 </div>
                 <div class="project-footer">
                     <a href="https://github.com/yuvalcohenrappaport/Portfolio_risk_managment" target="_blank" rel="noopener" class="project-link">
+                        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- WhatsApp Bot -->
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-icon ai">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <div class="project-header-text">
+                        <h3>AI WhatsApp Bot</h3>
+                        <span class="project-tagline">AI &middot; Automation &middot; Full-Stack</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>An AI-powered WhatsApp bot that learns your communication style and replies in your authentic voice. Includes group utilities like calendar extraction, weekly task reminders, and keyword auto-responses. Managed via a web dashboard.</p>
+                    <ul class="project-features">
+                        <li>AI voice matching via Gemini</li>
+                        <li>Draft approval flow</li>
+                        <li>Google Calendar integration</li>
+                        <li>Keyword auto-responses</li>
+                        <li>React web dashboard</li>
+                        <li>SQLite + Drizzle ORM</li>
+                        <li>24/7 home server deployment</li>
+                        <li>JWT authentication</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Gemini AI</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Fastify</span>
+                        <span class="tech-tag">SQLite</span>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/yuvalcohenrappaport/whatsapp_bot" target="_blank" rel="noopener" class="project-link">
+                        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- Any-button IoT -->
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-icon iot">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </div>
+                    <div class="project-header-text">
+                        <h3>Any-button Smart IoT Device</h3>
+                        <span class="project-tagline">IoT &middot; React Native &middot; ESP32</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>A smart IoT device with a motorized claw on Y-Z axis rails that physically presses any button or switch. Controlled via a React Native app using Gemini AI to analyze buttons and generate execution configs over BLE.</p>
+                    <ul class="project-features">
+                        <li>Motorized Y-Z axis claw</li>
+                        <li>BLE device communication</li>
+                        <li>Gemini AI button analysis</li>
+                        <li>React Native mobile app</li>
+                        <li>Scheduled button presses</li>
+                        <li>Physical button trigger</li>
+                        <li>NVS config persistence</li>
+                        <li>Dark/light mode UI</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">ESP32</span>
+                        <span class="tech-tag">Gemini AI</span>
+                        <span class="tech-tag">BLE</span>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/yuvalcohenrappaport/Any_button" target="_blank" rel="noopener" class="project-link">
+                        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- Laser Beam Profiling -->
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-icon science">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="14.31" y1="8" x2="20.05" y2="17.94"/><line x1="9.69" y1="8" x2="21.17" y2="8"/><line x1="7.38" y1="12" x2="13.12" y2="2.06"/><line x1="9.69" y1="16" x2="3.95" y2="6.06"/><line x1="14.31" y1="16" x2="2.83" y2="16"/><line x1="16.62" y1="12" x2="10.88" y2="21.94"/></svg>
+                    </div>
+                    <div class="project-header-text">
+                        <h3>Laser Beam Profiling</h3>
+                        <span class="project-tagline">Physics &middot; Data Analysis &middot; Scientific</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>A Python analysis tool for laser beam images captured by a camera sensor. Fits 2D Gaussian profiles to intensity data and computes beam size, centroid position, and RMS pointing stability with diagnostic visualizations.</p>
+                    <ul class="project-features">
+                        <li>2D Gaussian beam fitting</li>
+                        <li>Beam size calculation (1/e&sup2;)</li>
+                        <li>RMS pointing stability</li>
+                        <li>TIFF image processing</li>
+                        <li>Diagnostic plot generation</li>
+                        <li>Multi-test-case support</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">SciPy</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">tifffile</span>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/yuvalcohenrappaport/Laser_beam_profiling" target="_blank" rel="noopener" class="project-link">
                         <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                         View on GitHub
                     </a>
