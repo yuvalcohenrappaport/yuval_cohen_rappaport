@@ -235,10 +235,10 @@
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
         }
 
         .hero-text {
@@ -306,15 +306,18 @@
         .hero-desc {
             font-size: 1.1rem;
             color: var(--text-mid);
-            max-width: 480px;
+            max-width: 600px;
             line-height: 1.75;
             margin-bottom: 2.5rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-buttons {
             display: flex;
             gap: 0.75rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn {
@@ -1313,32 +1316,6 @@
                     Get in Touch
                 </a>
                 <a href="#projects" class="btn btn-outline">View Projects</a>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="hero-orb"></div>
-            <div class="hero-card-stack">
-                <div class="hero-mini-card reveal" style="--i:1">
-                    <div class="mini-icon coral">&#127919;</div>
-                    <div class="mini-text">
-                        <strong>SaaS Product Led</strong>
-                        Built from scratch at Agrint
-                    </div>
-                </div>
-                <div class="hero-mini-card reveal" style="--i:2">
-                    <div class="mini-icon teal">&#128200;</div>
-                    <div class="mini-text">
-                        <strong>Data-Driven Decisions</strong>
-                        Python, SQL & analytics
-                    </div>
-                </div>
-                <div class="hero-mini-card reveal" style="--i:3">
-                    <div class="mini-icon gold">&#9889;</div>
-                    <div class="mini-text">
-                        <strong>Physics + Philosophy</strong>
-                        Tel Aviv University, B.A.
-                    </div>
-                </div>
             </div>
         </div>
     </div>
