@@ -26,6 +26,8 @@
             --teal-light: #E6F5F2;
             --gold: #C49A2D;
             --gold-light: #FFF8E7;
+            --canvas-dot: rgba(232, 77, 53, 0.2);
+            --canvas-line: rgba(26, 122, 109, 0.06);
             --nav-bg: rgba(250, 250, 247, 0.82);
             --shadow-sm: 0 1px 3px rgba(28,28,28,0.04);
             --shadow-md: 0 8px 32px rgba(28,28,28,0.06);
@@ -47,6 +49,8 @@
             --teal-light: rgba(45, 212, 184, 0.1);
             --gold: #F0C05A;
             --gold-light: rgba(240, 192, 90, 0.1);
+            --canvas-dot: rgba(255, 107, 74, 0.3);
+            --canvas-line: rgba(45, 212, 184, 0.08);
             --nav-bg: rgba(18, 18, 16, 0.85);
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
             --shadow-md: 0 8px 32px rgba(0,0,0,0.3);
@@ -87,6 +91,17 @@
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        /* ---- Canvas Background ---- */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
 
         /* ---- Navigation ---- */
         nav {
@@ -1244,6 +1259,9 @@
 </head>
 <body>
 
+<!-- Dynamic Background -->
+<canvas id="bgCanvas"></canvas>
+
 <!-- Navigation -->
 <nav id="navbar">
     <div class="nav-inner">
@@ -1685,6 +1703,120 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ---- Dynamic Particle Background ----
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouse = { x: null, y: null };
+    const PARTICLE_COUNT = 70;
+    const CONNECT_DIST = 140;
+    const MOUSE_DIST = 180;
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    document.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+    document.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - 0.5) * 0.5;
+            this.vy = (Math.random() - 0.5) * 0.5;
+            this.r = Math.random() * 2 + 1;
+        }
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+            if (mouse.x !== null) {
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < MOUSE_DIST) {
+                    const force = (MOUSE_DIST - dist) / MOUSE_DIST * 0.02;
+                    this.vx += dx * force;
+                    this.vy += dy * force;
+                }
+            }
+
+            const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+            if (speed > 1.2) {
+                this.vx *= 0.98;
+                this.vy *= 0.98;
+            }
+        }
+        draw() {
+            const style = getComputedStyle(root);
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+            ctx.fillStyle = style.getPropertyValue('--canvas-dot').trim();
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push(new Particle());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const style = getComputedStyle(root);
+        const lineColor = style.getPropertyValue('--canvas-line').trim();
+
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < CONNECT_DIST) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = lineColor;
+                    ctx.lineWidth = 1 - dist / CONNECT_DIST;
+                    ctx.stroke();
+                }
+            }
+
+            if (mouse.x !== null) {
+                const dx = particles[i].x - mouse.x;
+                const dy = particles[i].y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < MOUSE_DIST) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    const alpha = (1 - dist / MOUSE_DIST) * 0.3;
+                    const isDark = root.getAttribute('data-theme') === 'dark';
+                    ctx.strokeStyle = isDark
+                        ? `rgba(255, 107, 74, ${alpha})`
+                        : `rgba(232, 77, 53, ${alpha})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
 </script>
 
 </body>
