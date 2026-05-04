@@ -1,8 +1,33 @@
 # ycrapps.com — Self-hosted Portfolio via Cloudflare Tunnel
 
 **Date:** 2026-05-03
-**Status:** Approved design — ready for implementation plan
+**Status:** Implemented 2026-05-04. Live at https://ycrapps.com.
 **Owner:** Yuval
+
+## Postscript: architecture deviation during implementation
+
+The spec called for a **locally-managed** tunnel (`cloudflared tunnel login` →
+`cloudflared tunnel create` → on-disk `config.yml` + credentials JSON +
+custom systemd unit `cloudflared-ycrapps.service`).
+
+The `cloudflared tunnel login` flow failed against the headless server: the
+browser callback couldn't reach the server's loopback, and the fallback
+cert-download didn't surface in the Mac's downloads. We pivoted to a
+**remote-managed** tunnel: tunnel created in the CF Zero Trust dashboard,
+connector token pasted on the server via `cloudflared service install
+<TOKEN>`, public hostnames configured in the dashboard.
+
+Functional equivalence holds:
+- Single hostname routing (`ycrapps.com` and `www.ycrapps.com` → `http://localhost:8080`).
+- Catch-all 404 (implicit in remote-managed when no other hostname matches).
+- Tunnel runs as `cloudflared.service` (default name) with hardening from
+  CF's official Debian package. The "separate tunnel for isolation" goal is
+  still met — this is a brand-new tunnel, not a reuse of the dormant
+  `cafehakerem.ycrapps.com` config left in `~/.cloudflared/`.
+
+The locally-managed flow is still available via `~/.cloudflared/cert.pem`
+if Yuval ever wants to migrate; nothing about the architecture forces the
+choice.
 
 ## Goal
 
