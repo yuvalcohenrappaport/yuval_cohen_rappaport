@@ -5,24 +5,26 @@ set -euo pipefail
 
 REPO_DIR="${HOME}/yuval_cohen_rappaport"
 DEST_DIR="/var/www/ycrapps"
+STATE_FILE="${HOME}/.local/state/ycrapps-deployed-sha"
 LOG_PREFIX="$(date -Iseconds) [deploy-ycrapps]"
 
+mkdir -p "$(dirname "${STATE_FILE}")"
 cd "${REPO_DIR}"
 
-# 1. Fetch latest origin/main.
+# 1. Fetch latest origin/main and align HEAD.
 git fetch --quiet origin main
+git reset --hard origin/main --quiet
+HEAD_SHA="$(git rev-parse HEAD)"
 
-LOCAL="$(git rev-parse HEAD)"
-REMOTE="$(git rev-parse origin/main)"
-if [[ "${LOCAL}" == "${REMOTE}" ]]; then
-  echo "${LOG_PREFIX} no-op (HEAD=${LOCAL:0:8})"
+# 2. Skip if the deployed tree already matches HEAD.
+DEPLOYED="$(cat "${STATE_FILE}" 2>/dev/null || true)"
+if [[ "${DEPLOYED}" == "${HEAD_SHA}" ]]; then
+  echo "${LOG_PREFIX} no-op (deployed=${HEAD_SHA:0:8})"
   exit 0
 fi
 
-echo "${LOG_PREFIX} updating ${LOCAL:0:8} -> ${REMOTE:0:8}"
-
-# 2. Hard-reset to origin/main. The repo on the server is read-only material.
-git reset --hard origin/main --quiet
+PREV_DISPLAY="${DEPLOYED:0:8}"
+echo "${LOG_PREFIX} deploying ${HEAD_SHA:0:8} (was ${PREV_DISPLAY:-none})"
 
 # 3. Atomic rsync into doc root. Excludes guard against committing junk.
 sudo /usr/bin/rsync -a --delete \
@@ -43,4 +45,5 @@ sudo find "${DEST_DIR}" -type d -exec chmod 0755 {} +
 sudo find "${DEST_DIR}" -type f -exec chmod 0644 {} +
 sudo chown -R root:www-data "${DEST_DIR}"
 
-echo "${LOG_PREFIX} deployed ${REMOTE:0:8}"
+echo "${HEAD_SHA}" > "${STATE_FILE}"
+echo "${LOG_PREFIX} deployed ${HEAD_SHA:0:8}"
