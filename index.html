@@ -240,6 +240,50 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .node.you rect.box { stroke: var(--signal); stroke-dasharray: 4 3; }
 .node.you text { fill: var(--signal); }
 
+/* ============ node hover tooltip ============ */
+#node-tip {
+  position: absolute;
+  z-index: 6;
+  pointer-events: none;
+  max-width: 240px;
+  background: color-mix(in srgb, var(--bg-deep) 96%, transparent);
+  border: 1px solid var(--amber-dim);
+  border-radius: 6px;
+  box-shadow: 0 4px 18px rgba(0,0,0,.55), 0 0 0 1px rgba(245,166,35,.07);
+  padding: 10px 13px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 120ms ease-out, transform 120ms ease-out;
+  white-space: normal;
+}
+#node-tip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  #node-tip { transition: none; }
+}
+#node-tip .tip-kicker {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  margin-bottom: 3px;
+}
+#node-tip .tip-status {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  margin-bottom: 5px;
+}
+#node-tip .tip-status.amber { color: var(--amber); }
+#node-tip .tip-status.signal { color: var(--signal); }
+#node-tip .tip-body {
+  font-size: 12.5px;
+  color: var(--tx-soft);
+  line-height: 1.5;
+}
+
 .trace { stroke: var(--line-2); stroke-width: 1.5; fill: none; }
 .packet { fill: var(--signal); r: 3; opacity: 0; }
 .packet.amber { fill: var(--amber); }
@@ -515,6 +559,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
             <span class="hint mono" id="mapHint">click a node ↓</span>
           </div>
 
+          <div id="node-tip"><div class="tip-kicker"></div><div class="tip-status mono"></div><div class="tip-body"></div></div>
           <svg id="sysmap" viewBox="0 0 1200 600" role="img" aria-label="Map of Yuval's real running systems: home server connected to sensors, bots, a café platform, and this website">
             <!-- traces -->
             <g id="traces"></g>
@@ -958,6 +1003,81 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     document.getElementById('dClose').addEventListener('click', closeDrawer);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
 
+    /* ============ hover tooltip ============ */
+    var tip = document.getElementById('node-tip');
+    var tipShell = document.querySelector('.map-shell');
+    var tipVisible = false;
+    var openNodeData = null; // track which node's drawer is open
+
+    // patch closeDrawer to clear openNodeData
+    var _origClose = closeDrawer;
+    closeDrawer = function () { _origClose(); openNodeData = null; };
+
+    // patch openNode to track openNodeData and hide tip
+    var _origOpen = openNode;
+    openNode = function (n, gEl) {
+      _origOpen(n, gEl);
+      openNodeData = n;
+      hideTip();
+    };
+
+    function hideTip() {
+      tip.classList.remove('visible');
+      tipVisible = false;
+    }
+
+    function showTip(n, gEl) {
+      if (openNodeData === n) return; // suppress for open drawer node
+
+      // Content
+      tip.querySelector('.tip-kicker').textContent = n.kicker;
+      var st = tip.querySelector('.tip-status');
+      st.textContent = n.status;
+      st.className = 'tip-status' + (n.led === 'amber' ? ' amber' : n.led === 'signal' ? ' signal' : '');
+
+      // First sentence of body (max ~120 chars)
+      var firstSentence = n.body.match(/^[^.!?]+[.!?]/);
+      var bodyText = firstSentence ? firstSentence[0] : n.body.slice(0, 120);
+      tip.querySelector('.tip-body').textContent = bodyText;
+
+      // Position: above node top, clamped to shell bounds
+      // Convert SVG coords to shell-relative px
+      var svg = document.getElementById('sysmap');
+      var svgRect = svg.getBoundingClientRect();
+      var shellRect = tipShell.getBoundingClientRect();
+      var scaleX = svgRect.width / 1200;
+      var scaleY = svgRect.height / 600;
+
+      // Node top-center in shell px
+      var nodeTopPx = (svgRect.top - shellRect.top) + n.y * scaleY;
+      var nodeCenterX = (svgRect.left - shellRect.left) + (n.x + n.w / 2) * scaleX;
+
+      // Show tip to measure it, then position
+      tip.style.left = '0px';
+      tip.style.top = '0px';
+      tip.style.display = 'block';
+      var tipW = tip.offsetWidth;
+      var tipH = tip.offsetHeight;
+
+      // 12px above node top
+      var desiredTop = nodeTopPx - tipH - 12;
+      var desiredLeft = nodeCenterX - tipW / 2;
+
+      // Clamp to shell: right wall flip
+      var shellW = shellRect.width;
+      var shellH = shellRect.height;
+      if (desiredLeft + tipW > shellW - 8) {
+        desiredLeft = shellW - tipW - 8;
+      }
+      if (desiredLeft < 8) desiredLeft = 8;
+      if (desiredTop < 8) desiredTop = nodeTopPx + n.h * scaleY + 12; // flip below if near top
+
+      tip.style.left = desiredLeft + 'px';
+      tip.style.top = desiredTop + 'px';
+      tip.classList.add('visible');
+      tipVisible = true;
+    }
+
     NODES.forEach(function (n) {
       var g = document.createElementNS(svgNS, 'g');
       g.setAttribute('class', 'node' + (n.id === 'you' ? ' you' : ''));
@@ -1007,6 +1127,8 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 
       g.addEventListener('click', function () { openNode(n, g); });
       g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openNode(n, g); } });
+      g.addEventListener('mouseenter', (function(node, gEl) { return function() { showTip(node, gEl); }; })(n, g));
+      g.addEventListener('mouseleave', hideTip);
       gN.appendChild(g);
     });
 
