@@ -524,7 +524,8 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 @media (max-width:860px) { .arcade-trigger { display:none !important; } }
 @media (prefers-reduced-motion:reduce) { .arcade-trigger { display:none !important; } }
 .arcade-overlay { position:fixed; inset:0; z-index:59; background:var(--bg-deep); background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px); background-size:28px 28px; font-family:var(--mono); }
-.arc-head { padding:70px 24px 0; text-align:center; }
+.arc-head { padding:70px 24px 0; text-align:center; transition:opacity .6s; }
+.arc-head.dim { opacity:.18; }
 .arc-title { font-size:clamp(13px,1.8vw,16px); font-weight:600; letter-spacing:.12em; color:var(--amber); text-transform:uppercase; }
 .arc-sub { font-size:11px; letter-spacing:.08em; color:var(--tx-mute); text-transform:uppercase; margin-top:4px; }
 .arc-hud { position:absolute; top:74px; left:18px; font-size:11px; letter-spacing:.07em; color:var(--tx-soft); line-height:1.8; }
@@ -1335,7 +1336,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
       if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = sw||1; ctx.stroke(); }
     }
     function drawLED(x, y, color) { ctx.beginPath(); ctx.arc(x,y,3.5,0,Math.PI*2); ctx.fillStyle = color; ctx.fill(); }
-    function initPlayer() { player = {x: canvas.width/2-60, y: canvas.height-60, w:120, h:40, speed:4}; }
+    function initPlayer() { player = {x: canvas.width/2-60, y: canvas.height-90, w:120, h:40, speed:4}; }
     function updateHUD() {
       if (!hudScore) return;
       hudScore.textContent = 'SCORE — '+score;
@@ -1435,6 +1436,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
       var head=document.createElement('div'); head.className='arc-head';
       head.innerHTML='<div class="arc-title">UPTIME.DEF — OPERATOR DEFENSE PROTOCOL</div><div class="arc-sub">system integrity under threat</div>';
       overlay.appendChild(head);
+      setTimeout(function(){ if(head) head.classList.add('dim'); }, 2500); /* clear the field once play starts */
       var hud=document.createElement('div'); hud.className='arc-hud';
       hud.innerHTML='<div id="arcScore">SCORE — 0</div><div>INTEGRITY — <span class="arc-int-track"><span class="arc-int-fill" id="arcIntFill"></span></span> <span id="arcIntPct">100%</span></div>';
       overlay.appendChild(hud);
