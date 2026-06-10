@@ -29,6 +29,7 @@ echo "${LOG_PREFIX} deploying ${HEAD_SHA:0:8} (was ${PREV_DISPLAY:-none})"
 # 3. Atomic rsync into doc root. Excludes guard against committing junk.
 sudo /usr/bin/rsync -a --delete \
   --exclude='.git' \
+  --exclude='.planning' \
   --exclude='.claude' \
   --exclude='.vscode' \
   --exclude='docs' \
