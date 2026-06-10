@@ -278,6 +278,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 }
 #node-tip .tip-status.amber { color: var(--amber); }
 #node-tip .tip-status.signal { color: var(--signal); }
+#node-tip .tip-status.green { color: var(--green); }
 #node-tip .tip-body {
   font-size: 12.5px;
   color: var(--tx-soft);
@@ -545,7 +546,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
       <div class="wrap">
         <div class="console-head">
           <h1>I build products like<br><span class="amber">infrastructure:</span><br>shipped, monitored,<br>measured.</h1>
-          <p class="console-sub"><b>Yuval Cohen Rappaport — Product Manager.</b> The map below is real. These are the systems running in my apartment right now. The map below is not a metaphor — <span class="mono-inline">it's my apartment.</span> Click any node.</p>
+          <p class="console-sub"><b>Yuval Cohen Rappaport — Product Manager.</b> The map below is real. These are the systems running in my apartment right now. Click any node.</p>
         </div>
 
         <div class="map-shell">
@@ -890,7 +891,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     /* ============ system map ============ */
     var NODES = [
       { id: 'server', x: 500, y: 240, w: 200, h: 96, label: 'HOME SERVER', sub: 'TLV apartment · Ubuntu', led: 'green',
-        kicker: 'CORE — always on', status: '● RUNNING · always on',
+        kicker: 'CORE — always on', status: '● RUNNING · 24/7',
         body: 'A headless Linux box in my apartment running the whole operation: the WhatsApp assistant, nightly AI mission runner, job-hunt pipeline, security monitor, backups — and the web server that delivered this very page to you.',
         stack: 'Ubuntu · Docker · PM2 · cron · Tailscale · nginx', link: '#operator', linkText: 'operator file ↓' },
       { id: 'mac', x: 80, y: 60, w: 170, h: 76, label: 'DEV MACHINE', sub: 'where things get built', led: 'amber',
@@ -1033,7 +1034,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
       tip.querySelector('.tip-kicker').textContent = n.kicker;
       var st = tip.querySelector('.tip-status');
       st.textContent = n.status;
-      st.className = 'tip-status' + (n.led === 'amber' ? ' amber' : n.led === 'signal' ? ' signal' : '');
+      st.className = 'tip-status' + (n.led === 'amber' ? ' amber' : n.led === 'signal' ? ' signal' : ' green');
 
       // First sentence of body (max ~120 chars)
       var firstSentence = n.body.match(/^[^.!?]+[.!?]/);
