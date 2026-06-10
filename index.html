@@ -12,8 +12,35 @@
   <meta property="og:title" content="Yuval Cohen Rappaport — Product Manager">
   <meta property="og:description" content="PM specialized in integrating AI into the product lifecycle. Tel Aviv.">
   <meta property="og:url" content="https://ycrapps.com/">
+  <meta property="og:site_name" content="ycrapps.com">
+  <meta property="og:image" content="https://ycrapps.com/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Yuval Cohen Rappaport — Product Manager">
+  <meta name="twitter:description" content="PM specialized in integrating AI into the product lifecycle. Tel Aviv.">
+  <meta name="twitter:image" content="https://ycrapps.com/og.png">
+
+  <link rel="canonical" href="https://ycrapps.com/">
   <link rel="icon" href="/favicon.ico">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yuval Cohen Rappaport",
+    "jobTitle": "Product Manager",
+    "url": "https://ycrapps.com/",
+    "email": "mailto:yuvalc79@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Tel Aviv", "addressCountry": "IL" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Tel Aviv University" },
+    "sameAs": [
+      "https://www.linkedin.com/in/yuval-cohen-rappaport-b779851b2",
+      "https://github.com/yuvalcohenrappaport"
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1695,7 +1722,8 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
       .portfolio-root.v3-root .v3-featured,
       .portfolio-root.v3-root .v3-proj-grid,
       .portfolio-root.v3-root .v3-edu-grid,
-      .portfolio-root.v3-root .v3-contact-grid { grid-template-columns: 1fr !important; }
+      .portfolio-root.v3-root .v3-contact-layout { grid-template-columns: 1fr !important; gap: 36px !important; }
+      .portfolio-root.v3-root .pcs-intro-actions-only { grid-template-columns: 1fr !important; }
       .portfolio-root.v3-root .v3-skill.wide { grid-column: span 1 !important; }
       .portfolio-root.v3-root .v3-stats { grid-template-columns: 1fr 1fr !important; }
       .portfolio-root.v3-root .v3-feat-features { grid-template-columns: 1fr !important; }
@@ -2097,10 +2125,10 @@ window.CV = {
     stack: ["TypeScript", "Node.js", "Baileys", "Gemini 1.5", "ElevenLabs TTS", "Fastify", "SQLite + Drizzle", "React 19"],
     link: "https://github.com/yuvalcohenrappaport/whatsapp_bot"
   }, {
-    title: "AI Automation Toolkit",
-    kind: "SaaS · AI",
-    blurb: "Portfolio of internal AI tools shipped for local businesses — daily-use workflows replacing manual processes.",
-    stack: ["Python", "LLM APIs", "Web"],
+    title: "Café Loyalty & BI Platform",
+    kind: "B2B SaaS · In production",
+    blurb: "End-to-end loyalty, competitions, and business-intelligence platform built for a Tel Aviv café — staff iPad flows on the floor, owner dashboards with live telemetry, and POS-integrated reporting. In daily production use.",
+    stack: ["Python", "FastAPI", "PostgreSQL", "React", "Docker"],
     link: "#"
   }, {
     title: "Portfolio Risk Dashboard",
@@ -2488,7 +2516,7 @@ function V3_Hero({
     className: "v3-hero-inner"
   }, /*#__PURE__*/React.createElement("span", {
     className: "status-pill"
-  }, "Available \xB7 Q2 2026"), /*#__PURE__*/React.createElement("h1", {
+  }, "Available for new roles"), /*#__PURE__*/React.createElement("h1", {
     className: "v3-title"
   }, "Product Manager", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
     className: "v3-name"
