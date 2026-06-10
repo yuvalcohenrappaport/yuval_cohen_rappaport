@@ -1346,7 +1346,9 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     }
     function spawnRect() {
       var inc = INCIDENTS[Math.floor(Math.random()*INCIDENTS.length)];
-      rects.push({x:40+Math.random()*(canvas.width-120), y:-30, w:80, h:30, label:inc.label, sev:inc.sev,
+      ctx.font = '600 9px ' + CV.mono;
+      var w = Math.ceil(ctx.measureText(inc.label).width) + 30; /* 20px LED gutter + 10px right pad */
+      rects.push({x:40+Math.random()*Math.max(1,canvas.width-80-w), y:-30, w:w, h:30, label:inc.label, sev:inc.sev,
         speed:Math.min(150,60+Math.floor(hits/10)*18), ledPhase:Math.random()*Math.PI*2});
     }
     function showGameOver() {
