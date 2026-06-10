@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yuval Cohen Rappaport — Product Manager</title>
-  <meta name="description" content="Product Manager based in Tel Aviv. Specialized in integrating AI into the product lifecycle to ship MVPs and automation tools at speed.">
+  <meta name="description" content="Product Manager based in Tel Aviv. I build products like infrastructure: shipped, monitored, measured. Explore the live map of systems I run.">
   <meta name="author" content="Yuval Cohen Rappaport">
-  <meta name="theme-color" content="#F6F3EC">
+  <meta name="theme-color" content="#101216">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Yuval Cohen Rappaport — Product Manager">
-  <meta property="og:description" content="PM specialized in integrating AI into the product lifecycle. Tel Aviv.">
+  <meta property="og:description" content="PM specialized in integrating AI into the product lifecycle. Everything on this site is real and running. Tel Aviv.">
   <meta property="og:url" content="https://ycrapps.com/">
   <meta property="og:site_name" content="ycrapps.com">
   <meta property="og:image" content="https://ycrapps.com/og.png">
@@ -19,7 +19,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Yuval Cohen Rappaport — Product Manager">
-  <meta name="twitter:description" content="PM specialized in integrating AI into the product lifecycle. Tel Aviv.">
+  <meta name="twitter:description" content="PM specialized in integrating AI into the product lifecycle. Everything on this site is real and running. Tel Aviv.">
   <meta name="twitter:image" content="https://ycrapps.com/og.png">
 
   <link rel="canonical" href="https://ycrapps.com/">
@@ -44,37 +44,37 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Schibsted+Grotesk:ital,wght@0,400..700;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap">
 
   <style>
 /* ============================================================
-   YCR — "The Product Dossier"
-   A portfolio typeset like a product spec. Paper, ink, vermilion.
+   YUVAL.SYS — a portfolio that is literally running.
+   The hero is a map of real infrastructure in a Tel Aviv
+   apartment. Dark because the systems work the night shift.
    ============================================================ */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --paper:       #F6F3EC;
-  --paper-deep:  #EFEAE0;
-  --paper-card:  #FBF9F4;
-  --ink:         #1D1B16;
-  --ink-soft:    #514C42;
-  --ink-mute:    #6E6759;
-  --hairline:    #DCD5C7;
-  --hairline-2:  #CEC6B5;
-  --verm:        #D9472B;
-  --verm-deep:   #B93A22;
-  --verm-tint:   #F4E0DA;
-  --teal:        #1A6B5F;
-  --teal-tint:   #DFEAE6;
+  --bg:        #101216;
+  --bg-deep:   #0B0D10;
+  --panel:     #171A20;
+  --panel-2:   #1D212A;
+  --line:      #262B35;
+  --line-2:    #323845;
+  --tx:        #E9E7E1;
+  --tx-soft:   #ABA89F;
+  --tx-mute:   #6F6E68;
+  --amber:     #F5A623;
+  --amber-dim: #8a6418;
+  --green:     #5BC97C;
+  --signal:    #6FD3E0;
+  --verm:      #E8502F;
+  --verm-soft: rgba(232, 80, 47, 0.14);
 
-  --serif: 'Fraunces', Georgia, serif;
-  --sans:  'Schibsted Grotesk', -apple-system, sans-serif;
-  --mono:  'IBM Plex Mono', ui-monospace, monospace;
-
-  --gutter: clamp(20px, 5vw, 72px);
-  --measure: 64ch;
+  --sans: 'Archivo', -apple-system, sans-serif;
+  --mono: 'Spline Sans Mono', ui-monospace, monospace;
+  --gutter: clamp(20px, 4.5vw, 64px);
 }
 
 html { scroll-behavior: smooth; }
@@ -85,739 +85,654 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--sans);
-  font-size: 17px;
+  font-size: 16.5px;
   line-height: 1.65;
-  color: var(--ink);
-  background: var(--paper);
+  color: var(--tx);
+  background:
+    radial-gradient(1200px 600px at 70% -10%, #181C24 0%, transparent 60%),
+    var(--bg);
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
-/* Paper grain */
+/* CRT-ish scanline veil, extremely subtle */
 body::after {
   content: '';
   position: fixed; inset: 0;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-  z-index: 999;
-  opacity: 0.55;
-  mix-blend-mode: multiply;
+  background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(0,0,0,0.07) 3px 4px);
+  opacity: .5;
+  z-index: 998;
 }
 
-::selection { background: var(--verm); color: var(--paper); }
+::selection { background: var(--amber); color: var(--bg-deep); }
 
 a { color: inherit; }
 ul { list-style: none; }
 button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
 
-.mono {
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
+.mono { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: var(--gutter); }
 
-.wrap { max-width: 1180px; margin: 0 auto; padding-inline: var(--gutter); }
-
-/* ============ Reveal on scroll ============ */
-.rv { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+.rv { opacity: 0; transform: translateY(16px); transition: opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
 .rv.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; } }
 
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes led { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+
+/* ============ Boot overlay ============ */
+#boot {
+  position: fixed; inset: 0; z-index: 1000;
+  background: var(--bg-deep);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: opacity .45s ease;
+}
+#boot.gone { opacity: 0; pointer-events: none; }
+.boot-card { font-family: var(--mono); font-size: clamp(12px, 1.6vw, 14px); color: var(--tx-soft); line-height: 2; min-width: min(440px, 86vw); }
+.boot-card .ok { color: var(--green); }
+.boot-card .hd { color: var(--amber); letter-spacing: .12em; }
+.boot-line { opacity: 0; animation: rise .3s ease both; }
+.boot-hint { margin-top: 18px; color: var(--tx-mute); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; opacity: 0; animation: rise .4s ease both 1.1s, led 1.6s ease-in-out infinite 1.5s; }
+@media (prefers-reduced-motion: reduce) { #boot { display: none; } }
+
 /* ============ Topbar ============ */
 .topbar {
-  position: sticky; top: 0; z-index: 50;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  position: sticky; top: 0; z-index: 60;
+  background: color-mix(in srgb, var(--bg-deep) 86%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--line);
 }
-.topbar-in {
-  display: flex; align-items: center; justify-content: space-between;
-  height: 60px;
-}
-.wordmark { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-decoration: none; }
-.wordmark b { color: var(--verm); }
-.topnav { display: flex; gap: 28px; }
-.topnav a {
-  font-family: var(--mono); font-size: 12px; font-weight: 500;
-  letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
-  color: var(--ink-mute);
-  transition: color .2s;
-}
-.topnav a:hover { color: var(--verm); }
-.status-chip {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size: 11px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--teal);
-}
-.status-chip i {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--teal);
-  animation: pulse 2.4s ease-out infinite;
-}
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--teal) 45%, transparent); }
-  70% { box-shadow: 0 0 0 8px transparent; }
-  100% { box-shadow: 0 0 0 0 transparent; }
-}
-@media (max-width: 720px) { .topnav { display: none; } }
+.topbar-in { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+.wordmark { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-decoration: none; white-space: nowrap; }
+.wordmark .amber { color: var(--amber); }
+.topnav { display: flex; gap: 24px; }
+.topnav a { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none; color: var(--tx-mute); transition: color .2s; }
+.topnav a:hover { color: var(--amber); }
+.uptime { font-family: var(--mono); font-size: 11px; color: var(--tx-mute); display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.uptime i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: led 2.2s ease-in-out infinite; }
+@media (max-width: 760px) { .topnav { display: none; } }
 
-/* ============ Hero ============ */
-.hero { position: relative; padding: clamp(56px, 9vh, 110px) 0 clamp(48px, 7vh, 88px); }
-
-/* print crop marks */
-.crop { position: absolute; width: 18px; height: 18px; pointer-events: none; opacity: .8; }
-.crop::before, .crop::after { content: ''; position: absolute; background: var(--verm); }
-.crop::before { width: 1px; height: 100%; }
-.crop::after { height: 1px; width: 100%; }
-.crop.tl { top: 18px; left: calc(var(--gutter) - 8px); }
-.crop.tl::before { left: 8px; } .crop.tl::after { top: 8px; }
-.crop.tr { top: 18px; right: calc(var(--gutter) - 8px); }
-.crop.tr::before { right: 8px; } .crop.tr::after { top: 8px; }
-
-.doc-meta {
-  display: flex; flex-wrap: wrap; gap: 10px 28px;
-  color: var(--ink-mute);
-  margin-bottom: clamp(36px, 6vh, 64px);
-}
-.doc-meta span b { color: var(--ink); font-weight: 600; }
-.doc-meta .vm { color: var(--verm); }
-
-.hero h1 {
-  font-family: var(--serif);
-  font-optical-sizing: auto;
-  font-weight: 560;
-  font-size: clamp(42px, 7.6vw, 100px);
+/* ============ Console hero ============ */
+.console { padding: clamp(28px, 5vh, 56px) 0 0; }
+.console-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
+.console-head h1 {
+  font-weight: 800;
+  font-stretch: 115%;
+  font-size: clamp(30px, 4.6vw, 58px);
   line-height: 1.02;
-  letter-spacing: -0.025em;
-  max-width: 14ch;
-  text-wrap: balance;
-}
-.hero h1 em {
-  font-style: italic;
-  font-weight: 480;
-  color: var(--verm);
-}
-.hero-sub {
-  margin-top: 28px;
-  max-width: 56ch;
-  font-size: clamp(17px, 1.5vw, 20px);
-  line-height: 1.6;
-  color: var(--ink-soft);
-}
-.hero-cta { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px 30px; align-items: center; }
-.lnk {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size: 13px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  text-decoration: none;
-  padding-bottom: 3px;
-  border-bottom: 1.5px solid var(--ink);
-  transition: color .2s, border-color .2s;
-}
-.lnk .ar { transition: transform .25s cubic-bezier(.22,1,.36,1); }
-.lnk:hover { color: var(--verm); border-color: var(--verm); }
-.lnk:hover .ar { transform: translateX(4px); }
-.lnk.primary { color: var(--verm); border-color: var(--verm); }
-.lnk.primary:hover { color: var(--verm-deep); border-color: var(--verm-deep); }
-
-/* staggered load */
-@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-.hero .doc-meta { animation: rise .8s cubic-bezier(.22,1,.36,1) both .05s; }
-.hero h1        { animation: rise .8s cubic-bezier(.22,1,.36,1) both .15s; }
-.hero-sub       { animation: rise .8s cubic-bezier(.22,1,.36,1) both .28s; }
-.hero-cta       { animation: rise .8s cubic-bezier(.22,1,.36,1) both .4s; }
-
-/* hero spec table */
-.spec-strip {
-  margin-top: clamp(48px, 8vh, 80px);
-  border-top: 1px solid var(--hairline-2);
-  border-bottom: 1px solid var(--hairline-2);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  animation: rise .8s cubic-bezier(.22,1,.36,1) both .52s;
-}
-.spec-cell { padding: 18px 22px 20px 0; }
-.spec-cell + .spec-cell { padding-left: 22px; border-left: 1px solid var(--hairline); }
-.spec-cell .k { color: var(--ink-mute); display: block; margin-bottom: 6px; }
-.spec-cell .v { font-size: 15px; font-weight: 600; line-height: 1.4; }
-@media (max-width: 880px) {
-  .spec-strip { grid-template-columns: 1fr 1fr; }
-  .spec-cell:nth-child(3) { border-left: none; padding-left: 0; }
-  .spec-cell:nth-child(1), .spec-cell:nth-child(2) { border-bottom: 1px solid var(--hairline); }
-}
-@media (max-width: 480px) {
-  .spec-strip { grid-template-columns: 1fr; }
-  .spec-cell { border-left: none !important; padding-left: 0 !important; border-bottom: 1px solid var(--hairline); }
-  .spec-cell:last-child { border-bottom: none; }
-}
-
-/* ============ Section scaffolding ============ */
-.sec { padding: clamp(64px, 10vh, 120px) 0 0; }
-.sec-head {
-  display: flex; align-items: baseline; gap: 18px;
-  border-top: 2px solid var(--ink);
-  padding-top: 14px;
-  margin-bottom: clamp(36px, 6vh, 64px);
-}
-.sec-no { color: var(--verm); font-weight: 600; }
-.sec-title {
-  font-family: var(--serif);
-  font-weight: 560;
-  font-size: clamp(28px, 3.4vw, 44px);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-.sec-aside { margin-left: auto; color: var(--ink-mute); }
-@media (max-width: 640px) { .sec-aside { display: none; } }
-
-/* ============ Case studies ============ */
-.case {
-  position: relative;
-  padding: clamp(36px, 5vh, 56px) 0 clamp(44px, 6vh, 64px);
-}
-.case + .case { border-top: 1px solid var(--hairline-2); }
-
-.case-top { display: flex; align-items: flex-start; gap: clamp(20px, 3.5vw, 48px); }
-.case-no {
-  font-family: var(--serif);
-  font-size: clamp(64px, 9vw, 128px);
-  font-weight: 300;
-  line-height: 0.9;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--hairline-2);
-  user-select: none;
-  flex: 0 0 auto;
-  transition: color .5s, -webkit-text-stroke-color .5s;
-}
-.case:hover .case-no { color: var(--verm-tint); -webkit-text-stroke-color: var(--verm); }
-.case-id { flex: 1; min-width: 0; }
-.case-kicker { color: var(--ink-mute); margin-bottom: 10px; display: flex; flex-wrap: wrap; gap: 8px 0; align-items: center; }
-.case-kicker .live { color: var(--teal); }
-.case-kicker .sep { margin: 0 10px; color: var(--hairline-2); }
-.case-title {
-  font-family: var(--serif);
-  font-weight: 560;
-  font-size: clamp(26px, 3vw, 38px);
   letter-spacing: -0.015em;
-  line-height: 1.12;
+  text-transform: uppercase;
+  max-width: 17ch;
 }
-.case-lede { margin-top: 14px; max-width: var(--measure); color: var(--ink-soft); }
+.console-head h1 .dim { color: var(--tx-mute); }
+.console-head h1 .amber { color: var(--amber); }
+.console-sub { max-width: 44ch; color: var(--tx-soft); font-size: 15.5px; }
+.console-sub b { color: var(--tx); font-weight: 600; }
+.console-sub .mono-inline { font-family: var(--mono); font-size: 12.5px; color: var(--amber); }
 
-.case-cols {
-  margin-top: clamp(28px, 4vh, 44px);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(20px, 3vw, 44px);
+/* ============ The map ============ */
+.map-shell {
+  position: relative;
+  border: 1px solid var(--line-2);
+  background:
+    linear-gradient(transparent 0, transparent calc(100% - 1px)),
+    var(--panel);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
 }
-.case-col .k {
-  display: block; color: var(--verm);
-  padding-bottom: 8px; margin-bottom: 10px;
-  border-bottom: 1px solid var(--hairline);
-}
-.case-col p, .case-col li { font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
-.case-col li { padding-left: 16px; position: relative; margin-bottom: 8px; }
-.case-col li::before { content: '·'; position: absolute; left: 2px; color: var(--verm); font-weight: 700; }
-@media (max-width: 860px) { .case-cols { grid-template-columns: 1fr; gap: 24px; } }
-
-.case-foot {
-  margin-top: clamp(24px, 4vh, 36px);
-  display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px;
-}
-.stack-line { color: var(--ink-mute); letter-spacing: 0.04em; }
-.stack-line b { color: var(--ink); font-weight: 500; }
-
-/* exhibit (demo) frames */
-.exhibit {
-  margin-top: clamp(28px, 4vh, 44px);
-  border: 1px solid var(--hairline-2);
-  background: var(--paper-card);
-  box-shadow: 4px 4px 0 0 var(--paper-deep);
-}
-.exhibit-bar {
-  display: flex; align-items: center; justify-content: space-between;
+.map-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
   padding: 10px 16px;
-  border-bottom: 1px solid var(--hairline);
-  color: var(--ink-mute);
+  border-bottom: 1px solid var(--line-2);
+  background: color-mix(in srgb, var(--bg-deep) 65%, transparent);
 }
-.exhibit-bar .dotrow { display: flex; gap: 5px; }
-.exhibit-bar .dotrow i { width: 6px; height: 6px; border-radius: 50%; background: var(--hairline-2); }
-.exhibit-body { padding: clamp(16px, 2.5vw, 28px); }
+.map-bar .legend { display: flex; gap: 18px; flex-wrap: wrap; color: var(--tx-mute); }
+.map-bar .legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.map-bar .hint { color: var(--tx-mute); }
+@media (max-width: 760px) { .map-bar .legend { display: none; } }
 
-/* --- demo: whatsapp sim --- */
-.wa-chat { display: flex; flex-direction: column; gap: 10px; min-height: 230px; max-height: 300px; overflow-y: auto; padding: 4px 2px; }
-.wa-msg {
-  max-width: 78%;
-  padding: 10px 14px;
-  font-size: 14px; line-height: 1.5;
-  border: 1px solid var(--hairline-2);
-  background: var(--paper);
-  border-radius: 2px 12px 12px 12px;
-  animation: rise .4s cubic-bezier(.22,1,.36,1) both;
+#sysmap { display: block; width: 100%; height: auto; }
+
+/* SVG node styling */
+.node { cursor: pointer; }
+.node rect.box {
+  fill: var(--panel-2);
+  stroke: var(--line-2);
+  stroke-width: 1;
+  rx: 6;
+  transition: stroke .2s, fill .2s;
 }
-.wa-msg.me { align-self: flex-end; background: var(--teal-tint); border-color: color-mix(in srgb, var(--teal) 30%, var(--hairline-2)); border-radius: 12px 2px 12px 12px; }
-.wa-msg .tag { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
-.wa-msg.sys { align-self: center; max-width: 92%; background: var(--verm-tint); border-color: color-mix(in srgb, var(--verm) 28%, var(--hairline-2)); font-family: var(--mono); font-size: 12px; border-radius: 8px; }
-.wa-typing { display: inline-flex; gap: 4px; padding: 12px 14px; }
-.wa-typing i { width: 5px; height: 5px; border-radius: 50%; background: var(--ink-mute); animation: blink 1s infinite; }
+.node:hover rect.box, .node.active rect.box { stroke: var(--amber); fill: #232834; }
+.node text { font-family: var(--mono); fill: var(--tx); font-size: 11.5px; font-weight: 600; letter-spacing: .06em; }
+.node text.sub { fill: var(--tx-mute); font-size: 9.5px; font-weight: 400; letter-spacing: .04em; }
+.node circle.led { fill: var(--green); }
+.node circle.led.amber { fill: var(--amber); }
+.node circle.led.verm { fill: var(--verm); }
+.node circle.led { animation: led 2.6s ease-in-out infinite; }
+.node.you rect.box { stroke: var(--signal); stroke-dasharray: 4 3; }
+.node.you text { fill: var(--signal); }
+
+.trace { stroke: var(--line-2); stroke-width: 1.5; fill: none; }
+.packet { fill: var(--signal); r: 3; opacity: 0; }
+.packet.amber { fill: var(--amber); }
+.packet.verm { fill: var(--verm); }
+@media (prefers-reduced-motion: reduce) { .packet { display: none; } }
+
+/* mobile node list (replaces SVG below 760px) */
+.nodelist { display: none; padding: 14px; grid-template-columns: 1fr 1fr; gap: 8px; }
+.nodebtn {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 3px;
+  padding: 12px 12px 11px;
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  background: var(--panel-2);
+  text-align: left;
+  transition: border-color .2s;
+}
+.nodebtn:hover, .nodebtn.active { border-color: var(--amber); }
+.nodebtn .nl { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .06em; display: flex; align-items: center; gap: 7px; }
+.nodebtn .nl i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: led 2.6s infinite; flex: 0 0 auto; }
+.nodebtn .nl i.amber { background: var(--amber); }
+.nodebtn .nl i.signal { background: var(--signal); }
+.nodebtn .ns { font-family: var(--mono); font-size: 9.5px; color: var(--tx-mute); letter-spacing: .03em; }
+.nodebtn.you { border-style: dashed; border-color: color-mix(in srgb, var(--signal) 50%, var(--line-2)); }
+.nodebtn.you .nl { color: var(--signal); }
+@media (max-width: 760px) {
+  #sysmap { display: none; }
+  .nodelist { display: grid; }
+}
+
+/* node drawer */
+.drawer {
+  position: absolute;
+  right: 12px; top: 54px; bottom: 12px;
+  width: min(360px, calc(100% - 24px));
+  background: color-mix(in srgb, var(--bg-deep) 92%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  padding: 20px;
+  overflow-y: auto;
+  transform: translateX(calc(100% + 24px));
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+  z-index: 5;
+}
+.drawer.open { transform: none; }
+@media (max-width: 760px) {
+  .drawer {
+    position: fixed;
+    left: 10px; right: 10px; bottom: 10px; top: auto;
+    width: auto; max-height: 62vh;
+    transform: translateY(calc(100% + 20px));
+    z-index: 70;
+  }
+}
+.drawer .d-close { position: absolute; top: 10px; right: 12px; font-family: var(--mono); font-size: 12px; color: var(--tx-mute); padding: 4px 8px; }
+.drawer .d-close:hover { color: var(--verm); }
+.drawer .d-kicker { color: var(--amber); margin-bottom: 6px; }
+.drawer h3 { font-weight: 700; font-stretch: 110%; font-size: 21px; line-height: 1.15; text-transform: uppercase; letter-spacing: 0.01em; }
+.drawer .d-status { font-family: var(--mono); font-size: 11.5px; color: var(--green); margin-top: 8px; }
+.drawer .d-status.amber { color: var(--amber); }
+.drawer p { margin-top: 14px; font-size: 14px; color: var(--tx-soft); line-height: 1.6; }
+.drawer .d-stack { margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--tx-mute); line-height: 1.9; }
+.drawer .d-link { display: inline-flex; gap: 8px; margin-top: 16px; font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--amber-dim); padding-bottom: 3px; }
+.drawer .d-link:hover { color: var(--tx); border-color: var(--tx); }
+
+/* event log */
+.evlog {
+  border-top: 1px solid var(--line-2);
+  background: var(--bg-deep);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 10px 16px;
+  display: flex; align-items: center; gap: 14px;
+  overflow: hidden;
+}
+.evlog .tag { color: var(--tx-mute); flex: 0 0 auto; letter-spacing: .08em; }
+#evline { white-space: nowrap; color: var(--tx-soft); overflow: hidden; text-overflow: ellipsis; }
+#evline .t { color: var(--amber); }
+#evline .ok { color: var(--green); }
+
+.map-foot { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 26px; justify-content: space-between; color: var(--tx-mute); font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em; }
+.map-foot .truth { color: var(--tx-soft); }
+.map-foot .truth b { color: var(--amber); font-weight: 600; }
+
+/* ============ Sections ============ */
+.sec { padding: clamp(72px, 11vh, 130px) 0 0; }
+.sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: clamp(30px, 5vh, 52px); }
+.sec-head .no { font-family: var(--mono); font-size: 12px; color: var(--amber); }
+.sec-head h2 { font-weight: 800; font-stretch: 115%; font-size: clamp(24px, 3vw, 38px); text-transform: uppercase; letter-spacing: 0; line-height: 1.05; }
+.sec-head .rule { flex: 1; height: 1px; background: var(--line-2); align-self: center; }
+.sec-head .aside { font-family: var(--mono); font-size: 11.5px; color: var(--tx-mute); letter-spacing: .07em; text-transform: uppercase; }
+@media (max-width: 640px) { .sec-head .aside { display: none; } }
+
+/* ============ Field reports (case studies) ============ */
+.report {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  overflow: hidden;
+}
+.report + .report { margin-top: clamp(22px, 3.5vh, 36px); }
+.report-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg-deep) 55%, transparent);
+}
+.report-bar .rid { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--amber); letter-spacing: .1em; }
+.report-bar .live { font-family: var(--mono); font-size: 11px; color: var(--green); letter-spacing: .08em; text-transform: uppercase; display: flex; align-items: center; gap: 7px; }
+.report-bar .live i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); animation: led 2.4s infinite; }
+.report-bar .rlink { margin-left: auto; font-family: var(--mono); font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--tx-mute); text-decoration: none; }
+.report-bar .rlink:hover { color: var(--amber); }
+.report-body { padding: clamp(20px, 3.5vw, 36px); }
+.report h3 { font-weight: 800; font-stretch: 112%; font-size: clamp(22px, 2.6vw, 32px); text-transform: uppercase; line-height: 1.08; max-width: 24ch; }
+.report .lede { margin-top: 12px; max-width: 64ch; color: var(--tx-soft); font-size: 15.5px; }
+.report-cols { margin-top: clamp(22px, 3.5vh, 34px); display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.5vw, 36px); }
+.rcol .k { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); padding-bottom: 8px; margin-bottom: 10px; border-bottom: 1px solid var(--line); }
+.rcol p, .rcol li { font-size: 14px; line-height: 1.6; color: var(--tx-soft); }
+.rcol li { padding-left: 14px; position: relative; margin-bottom: 8px; }
+.rcol li::before { content: '▸'; position: absolute; left: 0; top: 0; color: var(--amber); font-size: 10px; line-height: 2.2; }
+@media (max-width: 860px) { .report-cols { grid-template-columns: 1fr; gap: 20px; } }
+.report-foot { margin-top: clamp(18px, 3vh, 28px); font-family: var(--mono); font-size: 11.5px; color: var(--tx-mute); letter-spacing: .05em; }
+.report-foot b { color: var(--tx-soft); font-weight: 500; }
+
+/* terminal-style demos */
+.term {
+  margin-top: clamp(20px, 3vh, 30px);
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--bg-deep);
+  overflow: hidden;
+}
+.term-bar { display: flex; justify-content: space-between; align-items: center; padding: 8px 14px; border-bottom: 1px solid var(--line); color: var(--tx-mute); font-family: var(--mono); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; }
+.term-bar .dots { display: flex; gap: 5px; }
+.term-bar .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--line-2); }
+.term-body { padding: clamp(14px, 2.2vw, 24px); }
+
+/* whatsapp sim */
+.wa-chat { display: flex; flex-direction: column; gap: 10px; min-height: 180px; max-height: 290px; overflow-y: auto; padding-right: 4px; }
+.wa-msg { max-width: 80%; padding: 9px 13px; font-size: 13.5px; line-height: 1.5; background: var(--panel-2); border: 1px solid var(--line-2); border-radius: 2px 10px 10px 10px; animation: rise .4s cubic-bezier(.22,1,.36,1) both; }
+.wa-msg.me { align-self: flex-end; background: #20342A; border-color: #2E4A3A; border-radius: 10px 2px 10px 10px; }
+.wa-msg .tag { display: block; font-family: var(--mono); font-size: 9.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--green); margin-bottom: 4px; }
+.wa-msg.sys { align-self: center; max-width: 94%; font-family: var(--mono); font-size: 11.5px; background: transparent; border: 1px dashed var(--line-2); color: var(--amber); border-radius: 6px; }
+.wa-typing { display: inline-flex; gap: 4px; padding: 11px 13px; }
+.wa-typing i { width: 5px; height: 5px; border-radius: 50%; background: var(--tx-mute); animation: blink 1s infinite; }
 .wa-typing i:nth-child(2) { animation-delay: .15s; } .wa-typing i:nth-child(3) { animation-delay: .3s; }
 @keyframes blink { 0%, 60%, 100% { opacity: .25; } 30% { opacity: 1; } }
-.wa-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--hairline-2); }
-.chip {
-  font-family: var(--mono); font-size: 12px;
-  padding: 7px 12px;
-  border: 1px solid var(--hairline-2);
-  background: var(--paper);
-  transition: border-color .2s, color .2s, transform .15s;
-}
-.chip:hover:not(:disabled) { border-color: var(--verm); color: var(--verm); transform: translateY(-1px); }
+.wa-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.chip { font-family: var(--mono); font-size: 11.5px; padding: 7px 12px; border: 1px solid var(--line-2); border-radius: 5px; background: var(--panel); color: var(--tx-soft); transition: border-color .2s, color .2s, transform .15s; }
+.chip:hover:not(:disabled) { border-color: var(--amber); color: var(--amber); transform: translateY(-1px); }
 .chip:disabled { opacity: .4; cursor: default; }
+.chips-label { width: 100%; font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--tx-mute); }
 
-/* --- demo: tank sim --- */
-.tank-wrap { display: grid; grid-template-columns: 120px 1fr; gap: clamp(18px, 3vw, 32px); align-items: stretch; }
-.tank {
-  position: relative;
-  border: 1.5px solid var(--ink);
-  border-top-width: 0;
-  height: 210px;
-  background:
-    repeating-linear-gradient(to top, transparent 0 24px, var(--hairline) 24px 25px);
-}
-.tank-water {
-  position: absolute; left: 0; right: 0; bottom: 0;
-  height: 86%;
-  background: color-mix(in srgb, var(--teal) 28%, var(--paper));
-  border-top: 2px solid var(--teal);
-  transition: height .5s cubic-bezier(.22,1,.36,1);
-}
-.tank-label { position: absolute; top: -22px; left: 0; right: 0; text-align: center; color: var(--ink-mute); }
-.tank-pct { font-family: var(--mono); font-size: 22px; font-weight: 600; position: absolute; left: 0; right: 0; text-align: center; bottom: 8px; mix-blend-mode: multiply; }
-.tank-side { display: flex; flex-direction: column; gap: 12px; }
-.tg-alert {
-  border: 1px solid var(--hairline-2);
-  background: var(--paper);
-  padding: 12px 14px;
-  font-size: 14px;
-  display: flex; gap: 10px; align-items: flex-start;
-  animation: rise .4s cubic-bezier(.22,1,.36,1) both;
-}
-.tg-alert .ic {
-  flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%;
-  display: grid; place-items: center;
-  font-family: var(--mono); font-size: 12px; font-weight: 600;
-  background: var(--teal-tint); color: var(--teal);
-}
-.tg-alert.warn .ic { background: var(--verm-tint); color: var(--verm); }
-.tg-alert .t { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: var(--ink-mute); display: block; margin-top: 2px; }
-.tank-actions { margin-top: auto; display: flex; gap: 8px; }
-.tank-log { display: flex; flex-direction: column; gap: 8px; min-height: 120px; }
-@media (max-width: 640px) { .tank-wrap { grid-template-columns: 96px 1fr; } }
+/* tank sim */
+.tank-wrap { display: grid; grid-template-columns: 110px 1fr; gap: clamp(16px, 2.5vw, 28px); }
+.tank { position: relative; border: 1.5px solid var(--line-2); border-top: none; height: 200px; background: repeating-linear-gradient(to top, transparent 0 23px, var(--line) 23px 24px); }
+.tank-water { position: absolute; left: 0; right: 0; bottom: 0; height: 86%; background: rgba(111, 211, 224, 0.13); border-top: 2px solid var(--signal); transition: height .5s cubic-bezier(.22,1,.36,1); }
+.tank-label { position: absolute; top: -22px; left: 0; right: 0; text-align: center; color: var(--tx-mute); }
+.tank-pct { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--signal); position: absolute; left: 0; right: 0; text-align: center; bottom: 8px; }
+.tank-side { display: flex; flex-direction: column; gap: 10px; }
+.tg-alert { border: 1px solid var(--line-2); border-radius: 6px; background: var(--panel); padding: 10px 13px; font-size: 13px; color: var(--tx-soft); display: flex; gap: 10px; align-items: flex-start; animation: rise .4s cubic-bezier(.22,1,.36,1) both; }
+.tg-alert .ic { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 12px; font-weight: 600; background: #20342A; color: var(--green); }
+.tg-alert.warn .ic { background: var(--verm-soft); color: var(--verm); }
+.tg-alert b { color: var(--tx); }
+.tg-alert .t { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: var(--tx-mute); display: block; margin-top: 3px; }
+.tank-actions { margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+.tank-log { display: flex; flex-direction: column; gap: 8px; min-height: 110px; }
+@media (max-width: 600px) { .tank-wrap { grid-template-columns: 92px 1fr; } }
 
-/* ============ Workshop ledger ============ */
-.ledger { border-top: 1px solid var(--hairline-2); margin-top: clamp(40px, 6vh, 64px); }
-.ledger-head { padding: 14px 0 26px; color: var(--ink-mute); }
-.ledger-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1.1fr) auto;
-  gap: 18px;
-  align-items: baseline;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--hairline);
-  text-decoration: none;
-  transition: background .2s;
+/* ============ Operator file ============ */
+.op-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 4.5vw, 64px); align-items: start; }
+.op-bio p { color: var(--tx-soft); max-width: 58ch; }
+.op-bio p + p { margin-top: 14px; }
+.op-bio p b { color: var(--tx); font-weight: 600; }
+.op-bio .big {
+  font-weight: 800; font-stretch: 113%;
+  font-size: clamp(21px, 2.4vw, 30px);
+  line-height: 1.25;
+  color: var(--tx);
+  text-transform: none;
+  margin-bottom: 18px;
+  max-width: 24ch;
 }
-.ledger-row:hover { background: color-mix(in srgb, var(--paper-deep) 55%, transparent); }
-.ledger-row .t { font-family: var(--serif); font-size: 19px; font-weight: 560; letter-spacing: -0.01em; }
-.ledger-row:hover .t { color: var(--verm); }
-.ledger-row .kind { color: var(--ink-mute); }
-.ledger-row .stk { font-family: var(--mono); font-size: 12px; color: var(--ink-mute); }
-.ledger-row .go { font-family: var(--mono); font-size: 14px; color: var(--ink-mute); transition: transform .25s cubic-bezier(.22,1,.36,1), color .2s; }
-.ledger-row:hover .go { transform: translateX(4px); color: var(--verm); }
-@media (max-width: 760px) {
-  .ledger-row { grid-template-columns: 1fr auto; }
-  .ledger-row .kind { display: none; }
-  .ledger-row .stk { grid-column: 1; }
-  .ledger-row .go { grid-row: 1; grid-column: 2; }
-}
+.op-bio .big .amber { color: var(--amber); }
+.op-caps { border-top: 1px solid var(--line-2); }
+.op-cap { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.op-cap .n { font-family: var(--mono); font-size: 11px; color: var(--amber); }
+.op-cap .t { font-weight: 700; font-stretch: 108%; font-size: 15.5px; text-transform: uppercase; letter-spacing: .02em; }
+.op-cap .d { grid-column: 2; font-size: 13.5px; color: var(--tx-mute); margin-top: 2px; }
+.op-train { margin-top: 26px; font-family: var(--mono); font-size: 12px; color: var(--tx-mute); line-height: 2.1; }
+.op-train b { color: var(--tx-soft); font-weight: 500; }
+.op-train .y { color: var(--amber); }
+@media (max-width: 860px) { .op-grid { grid-template-columns: 1fr; } }
 
-/* ============ Capabilities ============ */
-.caps { border-top: 1px solid var(--hairline); }
-.cap {
-  display: grid;
-  grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.5fr);
-  gap: clamp(16px, 3vw, 40px);
-  padding: clamp(20px, 3vh, 30px) 0;
-  border-bottom: 1px solid var(--hairline);
-  align-items: baseline;
-}
-.cap-no { font-family: var(--mono); font-size: 13px; color: var(--verm); }
-.cap-name { font-family: var(--serif); font-size: clamp(20px, 2.2vw, 27px); font-weight: 560; letter-spacing: -0.01em; }
-.cap-desc { color: var(--ink-soft); font-size: 15.5px; max-width: 58ch; }
-@media (max-width: 760px) {
-  .cap { grid-template-columns: 48px 1fr; }
-  .cap-desc { grid-column: 2; }
-}
+/* ============ Service history ============ */
+.svc { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: clamp(18px, 3.5vw, 48px); padding: clamp(24px, 3.5vh, 36px) 0; }
+.svc + .svc { border-top: 1px solid var(--line); }
+.svc-when { font-family: var(--mono); font-size: 12px; color: var(--tx-mute); letter-spacing: .05em; }
+.svc-when .now { color: var(--green); }
+.svc h3 { font-weight: 800; font-stretch: 110%; font-size: clamp(18px, 2vw, 24px); text-transform: uppercase; line-height: 1.15; }
+.svc .org { font-family: var(--mono); font-size: 11.5px; color: var(--amber); letter-spacing: .08em; text-transform: uppercase; margin-top: 5px; }
+.svc p { margin-top: 12px; color: var(--tx-soft); font-size: 14.5px; max-width: 62ch; }
+.svc ul { margin-top: 12px; max-width: 62ch; }
+.svc li { position: relative; padding-left: 18px; margin-bottom: 8px; font-size: 14px; color: var(--tx-soft); }
+.svc li::before { content: '▸'; position: absolute; left: 0; color: var(--amber); font-size: 10px; line-height: 2.3; }
+@media (max-width: 720px) { .svc { grid-template-columns: 1fr; gap: 8px; } }
 
-/* ============ Experience changelog ============ */
-.xp {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: clamp(20px, 4vw, 56px);
-  padding: clamp(28px, 4vh, 44px) 0;
-}
-.xp + .xp { border-top: 1px solid var(--hairline-2); }
-.xp-when { color: var(--ink-mute); }
-.xp-when .now { color: var(--teal); font-weight: 600; }
-.xp-role { font-family: var(--serif); font-size: clamp(21px, 2.3vw, 28px); font-weight: 560; letter-spacing: -0.01em; line-height: 1.2; }
-.xp-org { margin-top: 4px; color: var(--ink-mute); }
-.xp-sum { margin-top: 14px; color: var(--ink-soft); max-width: var(--measure); }
-.xp-bullets { margin-top: 14px; max-width: var(--measure); }
-.xp-bullets li { position: relative; padding-left: 20px; margin-bottom: 9px; font-size: 15px; color: var(--ink-soft); }
-.xp-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--verm); font-family: var(--mono); font-size: 12px; top: 3px; }
-@media (max-width: 760px) { .xp { grid-template-columns: 1fr; gap: 10px; } }
-
-/* ============ Education ============ */
-.edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); }
-.edu { background: var(--paper); padding: clamp(20px, 3vw, 30px); }
-.edu .when { color: var(--ink-mute); display: block; margin-bottom: 12px; }
-.edu .what { font-family: var(--serif); font-size: 20px; font-weight: 560; letter-spacing: -0.01em; line-height: 1.25; }
-.edu .where { color: var(--verm); font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; margin-top: 6px; }
-.edu p { margin-top: 12px; font-size: 14px; color: var(--ink-soft); }
-@media (max-width: 860px) { .edu-grid { grid-template-columns: 1fr; } }
-
-/* ============ Contact (ink plate) ============ */
-.contact {
-  margin-top: clamp(72px, 11vh, 130px);
-  background: var(--ink);
-  color: var(--paper);
-}
-.contact-in { padding: clamp(64px, 10vh, 110px) 0 clamp(40px, 6vh, 64px); }
-.contact .sec-head { border-top-color: var(--paper); margin-bottom: clamp(28px, 5vh, 48px); }
-.contact .sec-aside { color: color-mix(in srgb, var(--paper) 55%, transparent); }
-.contact-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
-.contact h2 {
-  font-family: var(--serif);
-  font-weight: 560;
-  font-size: clamp(38px, 5.4vw, 72px);
-  line-height: 1.04;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
-}
-.contact h2 em { font-style: italic; font-weight: 480; color: var(--verm); }
-.contact-pitch { margin-top: 20px; max-width: 46ch; color: color-mix(in srgb, var(--paper) 72%, transparent); }
-.mail-link {
-  display: inline-flex; align-items: center; gap: 12px;
-  margin-top: 36px;
-  font-family: var(--mono); font-size: clamp(16px, 2vw, 22px); font-weight: 600;
-  color: var(--paper); text-decoration: none;
-  padding-bottom: 6px;
-  border-bottom: 2px solid var(--verm);
-  transition: color .2s;
-}
-.mail-link .ar { color: var(--verm); transition: transform .25s cubic-bezier(.22,1,.36,1); }
-.mail-link:hover { color: var(--verm); }
+/* ============ Channel (contact) ============ */
+.channel { margin-top: clamp(80px, 12vh, 150px); border-top: 1px solid var(--line-2); background: var(--bg-deep); }
+.channel-in { padding: clamp(56px, 9vh, 100px) 0 clamp(36px, 5vh, 56px); }
+.channel h2 { font-weight: 800; font-stretch: 118%; font-size: clamp(34px, 5.5vw, 78px); text-transform: uppercase; line-height: 0.98; letter-spacing: -0.01em; }
+.channel h2 .amber { color: var(--amber); }
+.channel-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
+.channel-pitch { margin-top: 18px; max-width: 46ch; color: var(--tx-soft); }
+.mail-link { display: inline-flex; align-items: center; gap: 12px; margin-top: 32px; font-family: var(--mono); font-size: clamp(15px, 1.8vw, 20px); font-weight: 600; color: var(--tx); text-decoration: none; padding-bottom: 6px; border-bottom: 2px solid var(--amber); transition: color .2s; }
+.mail-link .ar { color: var(--amber); transition: transform .25s cubic-bezier(.22,1,.36,1); }
+.mail-link:hover { color: var(--amber); }
 .mail-link:hover .ar { transform: translateX(6px); }
-.contact-rows { display: flex; flex-direction: column; }
-.c-row {
-  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--paper) 16%, transparent);
-  text-decoration: none;
-  color: color-mix(in srgb, var(--paper) 80%, transparent);
-  transition: color .2s, padding-left .25s cubic-bezier(.22,1,.36,1);
-}
-.c-row:hover { color: var(--paper); padding-left: 8px; }
-.c-row .k { color: var(--verm); }
-.c-row .v { font-family: var(--mono); font-size: 13px; }
-.contact-avail { margin-top: 28px; display: flex; align-items: center; gap: 10px; color: color-mix(in srgb, var(--paper) 60%, transparent); }
-.contact-avail i { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); flex: 0 0 auto; }
-@media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+.channel-avail { margin-top: 24px; display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--tx-mute); }
+.channel-avail i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: led 2.2s infinite; }
+.c-rows { display: flex; flex-direction: column; }
+.c-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--tx-soft); transition: color .2s, padding-left .25s cubic-bezier(.22,1,.36,1); }
+.c-row:hover { color: var(--tx); padding-left: 8px; }
+.c-row .k { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); }
+.c-row .v { font-family: var(--mono); font-size: 12.5px; }
+@media (max-width: 820px) { .channel-grid { grid-template-columns: 1fr; } }
 
-.foot {
-  margin-top: clamp(48px, 8vh, 80px);
-  padding: 22px 0 28px;
-  border-top: 1px solid color-mix(in srgb, var(--paper) 16%, transparent);
-  display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: space-between;
-  color: color-mix(in srgb, var(--paper) 45%, transparent);
-}
+.foot { margin-top: clamp(44px, 7vh, 72px); padding: 20px 0 26px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 28px; justify-content: space-between; font-family: var(--mono); font-size: 11px; letter-spacing: .05em; color: var(--tx-mute); }
+.foot .truth { color: var(--tx-soft); }
   </style>
 </head>
 <body>
 
+  <!-- boot overlay -->
+  <div id="boot" aria-hidden="true">
+    <div class="boot-card" id="bootCard"></div>
+  </div>
+
   <header class="topbar">
     <div class="wrap topbar-in">
-      <a class="wordmark" href="#top">YCR<b>.</b>&nbsp;/ PRODUCT DOSSIER</a>
+      <a class="wordmark" href="#top">YUVAL<span class="amber">.</span>SYS</a>
       <nav class="topnav" aria-label="Sections">
-        <a href="#work">Work</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
+        <a href="#map">System map</a>
+        <a href="#reports">Field reports</a>
+        <a href="#operator">Operator</a>
+        <a href="#history">History</a>
+        <a href="#contact">Open a channel</a>
       </nav>
-      <span class="status-chip"><i></i>Available</span>
+      <span class="uptime"><i></i><span id="clockTLV">--:--</span> TLV · ALL SYSTEMS NOMINAL</span>
     </div>
   </header>
 
   <main id="top">
 
-    <!-- ================= HERO ================= -->
-    <section class="hero">
-      <span class="crop tl" aria-hidden="true"></span>
-      <span class="crop tr" aria-hidden="true"></span>
+    <!-- ================= CONSOLE / MAP ================= -->
+    <section class="console" id="map">
       <div class="wrap">
-        <div class="doc-meta mono">
-          <span>Doc <b>YCR-2026</b></span>
-          <span>Subject <b>Yuval Cohen Rappaport</b></span>
-          <span>Role <b>Product Manager</b></span>
-          <span>Issued <b>Tel Aviv</b></span>
-          <span class="vm">Status — open to new roles</span>
-        </div>
-        <h1>I turn conceptual MVPs into <em>functional realities.</em></h1>
-        <p class="hero-sub">Product manager specialized in integrating AI into the product lifecycle — faster iteration, sharper discovery, and prototypes that ship. Everything below is built, deployed, and in use.</p>
-        <div class="hero-cta">
-          <a class="lnk primary" href="mailto:yuvalc79@gmail.com">Get in touch <span class="ar">→</span></a>
-          <a class="lnk" href="#work">Read the case studies <span class="ar">↓</span></a>
+        <div class="console-head">
+          <h1>While Tel Aviv sleeps,<br><span class="amber">my systems work.</span></h1>
+          <p class="console-sub"><b>Yuval Cohen Rappaport — Product Manager.</b> I build products like infrastructure: shipped, monitored, measured. The map below is not a metaphor — <span class="mono-inline">it's my apartment.</span> Click any node.</p>
         </div>
 
-        <div class="spec-strip">
-          <div class="spec-cell"><span class="k mono">Currently</span><span class="v">Independent PM — AI automation for local businesses</span></div>
-          <div class="spec-cell"><span class="k mono">Latest ship</span><span class="v">Café loyalty &amp; BI platform, in production</span></div>
-          <div class="spec-cell"><span class="k mono">Background</span><span class="v">B.A. Physics &amp; Philosophy, Tel Aviv University</span></div>
-          <div class="spec-cell"><span class="k mono">Method</span><span class="v">AI-first workflow — discovery to deployment</span></div>
+        <div class="map-shell">
+          <div class="map-bar">
+            <span class="mono" style="color: var(--amber);">LIVE SYSTEM MAP — TLV APARTMENT + EDGE</span>
+            <div class="legend mono">
+              <span><i style="background: var(--green); box-shadow: 0 0 6px var(--green);"></i>running</span>
+              <span><i style="background: var(--amber);"></i>scheduled</span>
+              <span><i style="background: var(--signal);"></i>you</span>
+            </div>
+            <span class="hint mono" id="mapHint">click a node ↓</span>
+          </div>
+
+          <svg id="sysmap" viewBox="0 0 1200 600" role="img" aria-label="Map of Yuval's real running systems: home server connected to sensors, bots, a café platform, and this website">
+            <!-- traces -->
+            <g id="traces"></g>
+            <!-- packets -->
+            <g id="packets"></g>
+            <!-- nodes -->
+            <g id="nodes"></g>
+          </svg>
+
+          <div class="nodelist" id="nodelist" aria-label="Systems on the map"></div>
+
+          <div class="evlog">
+            <span class="tag">EVENT LOG</span>
+            <span id="evline">initializing…</span>
+          </div>
+
+          <!-- node drawer -->
+          <aside class="drawer" id="drawer" aria-live="polite">
+            <button class="d-close" id="dClose">[ esc ]</button>
+            <div class="d-kicker mono" id="dKicker"></div>
+            <h3 id="dTitle"></h3>
+            <div class="d-status mono" id="dStatus"></div>
+            <p id="dBody"></p>
+            <div class="d-stack" id="dStack"></div>
+            <a class="d-link" id="dLink" href="#">details ↓</a>
+          </aside>
+        </div>
+
+        <div class="map-foot">
+          <span class="truth">Every node is a <b>real system I built and operate</b>. Telemetry below is replayed from production logs, shifted to your clock.</span>
+          <span>NO FRAMEWORK · NO CMS · ONE HTML FILE, SERVED FROM THE NODE MARKED “HOME SERVER”</span>
         </div>
       </div>
     </section>
 
-    <!-- ================= WORK ================= -->
-    <section class="sec" id="work">
+    <!-- ================= FIELD REPORTS ================= -->
+    <section class="sec" id="reports">
       <div class="wrap">
         <div class="sec-head rv">
-          <span class="sec-no mono">§01</span>
-          <h2 class="sec-title">Selected work</h2>
-          <span class="sec-aside mono">Built end-to-end · two are interactive</span>
+          <span class="no">01</span>
+          <h2>Field reports</h2>
+          <div class="rule"></div>
+          <span class="aside">Three systems, end to end</span>
         </div>
 
-        <!-- CASE 1: Café platform -->
-        <article class="case rv">
-          <div class="case-top">
-            <span class="case-no" aria-hidden="true">01</span>
-            <div class="case-id">
-              <div class="case-kicker mono"><span class="live">● In production</span><span class="sep">/</span><span>B2B SaaS</span><span class="sep">/</span><span>2026</span></div>
-              <h3 class="case-title">Café Loyalty &amp; BI Platform</h3>
-              <p class="case-lede">An end-to-end loyalty, competitions, and business-intelligence platform built for an independent Tel Aviv café — running on the floor every day.</p>
-            </div>
+        <!-- cafe -->
+        <article class="report rv" id="r-cafe">
+          <div class="report-bar">
+            <span class="rid">REPORT 01 — CAFE.PLATFORM</span>
+            <span class="live"><i></i>In production · real customers</span>
+            <a class="rlink" href="#contact">ask me about it →</a>
           </div>
-          <div class="case-cols">
-            <div class="case-col">
-              <span class="k mono">Problem</span>
-              <p>Independent cafés run loyalty on punch cards and gut feel. The owner wanted regulars coming back more often — and real visibility into what's working — without enterprise POS lock-in.</p>
-            </div>
-            <div class="case-col">
-              <span class="k mono">What I shipped</span>
-              <ul>
-                <li>Competition-based loyalty for regulars, designed around the barista's 10-second window at the register.</li>
-                <li>Staff iPad flows for the floor; owner dashboards with live telemetry and anomaly flags.</li>
-                <li>POS-integrated reporting and time-clock sync, reverse-engineered from the existing register.</li>
-              </ul>
-            </div>
-            <div class="case-col">
-              <span class="k mono">How it's measured</span>
-              <p>Phased releases behind a validation gate: a measurable retention lift over a six-week window decides validate / pivot / kill — before any expansion to a second location.</p>
-            </div>
-          </div>
-          <div class="case-foot">
-            <span class="stack-line mono">Stack — <b>Python · FastAPI · PostgreSQL · React · Docker</b></span>
-          </div>
-        </article>
-
-        <!-- CASE 2: WhatsApp -->
-        <article class="case rv">
-          <div class="case-top">
-            <span class="case-no" aria-hidden="true">02</span>
-            <div class="case-id">
-              <div class="case-kicker mono"><span class="live">● Running 24/7</span><span class="sep">/</span><span>AI assistant</span><span class="sep">/</span><span>2025–26</span></div>
-              <h3 class="case-title">WhatsApp AI Assistant</h3>
-              <p class="case-lede">WhatsApp was eating hours a day — events buried in chats, commitments forgotten. So I built an assistant that watches my threads, drafts replies in my voice, and quietly syncs the rest to Calendar and Tasks.</p>
-            </div>
-          </div>
-          <div class="case-cols">
-            <div class="case-col">
-              <span class="k mono">Insight</span>
-              <p>The cost isn't the typing — it's the context switching. The bot has to act in your voice, not just route messages.</p>
-            </div>
-            <div class="case-col">
-              <span class="k mono">What I shipped</span>
-              <ul>
-                <li>Voice-matched reply drafting from chat history; approval dashboard before anything sends.</li>
-                <li>Commitment detection → Google Tasks / Calendar, automatically.</li>
-                <li>PM2-supervised on a home server; in daily use 24/7.</li>
-              </ul>
-            </div>
-            <div class="case-col">
-              <span class="k mono">Success metric</span>
-              <p>Drafts approved without edits &gt;70%. Events captured with one tap. Zero missed commitments per week.</p>
-            </div>
-          </div>
-
-          <div class="exhibit">
-            <div class="exhibit-bar">
-              <span class="mono">Exhibit A — inbox simulator</span>
-              <span class="dotrow" aria-hidden="true"><i></i><i></i><i></i></span>
-            </div>
-            <div class="exhibit-body">
-              <div class="wa-chat" id="waChat" aria-live="polite"></div>
-              <div class="wa-chips" id="waChips">
-                <span class="mono" style="width:100%; color: var(--ink-mute); font-size: 11px;">Send a message, watch the assistant work:</span>
+          <div class="report-body">
+            <h3>A loyalty &amp; BI platform a café actually runs on</h3>
+            <p class="lede">Built end-to-end for an independent Tel Aviv café: competition-based loyalty for regulars, staff iPad flows for the floor, owner dashboards with live POS telemetry. Used on the floor every working day.</p>
+            <div class="report-cols">
+              <div class="rcol">
+                <span class="k">Problem</span>
+                <p>Independent cafés run loyalty on punch cards and gut feel. The owner wanted regulars back more often — and real visibility — without enterprise POS lock-in.</p>
+              </div>
+              <div class="rcol">
+                <span class="k">Shipped</span>
+                <ul>
+                  <li>Loyalty competitions designed around the barista's 10-second window at the register.</li>
+                  <li>Owner home with live telemetry, anomaly flags, and trial-progress tracking.</li>
+                  <li>POS reporting + time-clock sync, reverse-engineered from the existing register.</li>
+                </ul>
+              </div>
+              <div class="rcol">
+                <span class="k">Measured</span>
+                <p>Releases ship behind a validation gate: measurable retention lift over a six-week window decides validate / pivot / kill — before expansion to café #2.</p>
               </div>
             </div>
-          </div>
-
-          <div class="case-foot">
-            <span class="stack-line mono">Stack — <b>TypeScript · Baileys · Gemini · React 19 · SQLite</b></span>
-            <a class="lnk" href="https://github.com/yuvalcohenrappaport/whatsapp_bot" target="_blank" rel="noopener">GitHub <span class="ar">→</span></a>
+            <div class="report-foot">STACK — <b>Python · FastAPI · PostgreSQL · React · Docker</b> · private repo, happy to walk through it</div>
           </div>
         </article>
 
-        <!-- CASE 3: ESP32 -->
-        <article class="case rv">
-          <div class="case-top">
-            <span class="case-no" aria-hidden="true">03</span>
-            <div class="case-id">
-              <div class="case-kicker mono"><span class="live">● Deployed at home</span><span class="sep">/</span><span>IoT</span><span class="sep">/</span><span>2025</span></div>
-              <h3 class="case-title">ESP32 Coffee-Machine Tank Sensor</h3>
-              <p class="case-lede">My espresso machine kept dry-firing the boiler when the tank ran empty mid-shot. A capacitive sensor taped to the reservoir, an ESP32, and Telegram pings me the second it hits empty.</p>
-            </div>
+        <!-- whatsapp -->
+        <article class="report rv" id="r-wa">
+          <div class="report-bar">
+            <span class="rid">REPORT 02 — WHATSAPP.BOT</span>
+            <span class="live"><i></i>Running 24/7 · home server</span>
+            <a class="rlink" href="https://github.com/yuvalcohenrappaport/whatsapp_bot" target="_blank" rel="noopener">github →</a>
           </div>
-          <div class="case-cols">
-            <div class="case-col">
-              <span class="k mono">Insight</span>
-              <p>You don't need a level gauge. You need to know the <em>moment</em> the tank hits empty — with enough debouncing to ignore sloshing while pulling shots.</p>
+          <div class="report-body">
+            <h3>An assistant that answers WhatsApp in my voice</h3>
+            <p class="lede">WhatsApp was eating hours a day — events buried in chats, commitments forgotten. The bot watches my threads, drafts replies in my voice, and syncs the rest to Calendar and Tasks. Nothing sends without my approval.</p>
+            <div class="report-cols">
+              <div class="rcol">
+                <span class="k">Insight</span>
+                <p>The cost isn't the typing — it's the context switching. An assistant has to act in your voice, not just route messages.</p>
+              </div>
+              <div class="rcol">
+                <span class="k">Shipped</span>
+                <ul>
+                  <li>Voice-matched drafting from chat history, with an approval dashboard.</li>
+                  <li>Commitment detection → Google Tasks / Calendar, automatically.</li>
+                  <li>PM2-supervised on the home server. In daily use.</li>
+                </ul>
+              </div>
+              <div class="rcol">
+                <span class="k">Measured</span>
+                <p>Drafts approved without edits &gt;70%. Events captured with one tap. Zero missed commitments per week.</p>
+              </div>
             </div>
-            <div class="case-col">
-              <span class="k mono">What I shipped</span>
-              <ul>
-                <li>Non-contact capacitive sensor on the reservoir wall — no plumbing changes.</li>
-                <li>Telegram alerts with interactive commands and a configurable heartbeat.</li>
-                <li>5-minute polling, 1-minute debounce, WiFi auto-reconnect for unattended runtime.</li>
-              </ul>
-            </div>
-            <div class="case-col">
-              <span class="k mono">Success metric</span>
-              <p>Empty state detected within one check cycle. Zero false alarms over a 30-day window. Heartbeat confirms the device is alive.</p>
-            </div>
-          </div>
 
-          <div class="exhibit">
-            <div class="exhibit-bar">
-              <span class="mono">Exhibit B — tank simulator</span>
-              <span class="dotrow" aria-hidden="true"><i></i><i></i><i></i></span>
-            </div>
-            <div class="exhibit-body">
-              <div class="tank-wrap">
-                <div class="tank">
-                  <span class="tank-label mono">Reservoir</span>
-                  <div class="tank-water" id="tankWater"></div>
-                  <span class="tank-pct" id="tankPct">86%</span>
+            <div class="term">
+              <div class="term-bar"><span>SIMULATOR — replay of a real flow</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="term-body">
+                <div class="wa-chat" id="waChat" aria-live="polite"></div>
+                <div class="wa-chips" id="waChips">
+                  <span class="chips-label">Send a message, watch the pipeline:</span>
                 </div>
-                <div class="tank-side">
-                  <div class="tank-log" id="tankLog"></div>
-                  <div class="tank-actions">
-                    <button class="chip" id="btnShot">☕ Pull a shot</button>
-                    <button class="chip" id="btnRefill">↻ Refill tank</button>
+              </div>
+            </div>
+
+            <div class="report-foot">STACK — <b>TypeScript · Baileys · Gemini · React 19 · SQLite</b></div>
+          </div>
+        </article>
+
+        <!-- esp32 -->
+        <article class="report rv" id="r-tank">
+          <div class="report-bar">
+            <span class="rid">REPORT 03 — TANK.SENSOR</span>
+            <span class="live"><i></i>Deployed · kitchen counter</span>
+            <a class="rlink" href="https://github.com/yuvalcohenrappaport/water_sensor" target="_blank" rel="noopener">github →</a>
+          </div>
+          <div class="report-body">
+            <h3>The espresso machine that texts me</h3>
+            <p class="lede">My machine kept dry-firing the boiler when the tank ran empty mid-shot. A capacitive sensor taped to the reservoir, an ESP32, and Telegram pings me the second it hits empty. Small system, complete product thinking.</p>
+            <div class="report-cols">
+              <div class="rcol">
+                <span class="k">Insight</span>
+                <p>You don't need a level gauge. You need the <em>moment</em> it hits empty — debounced enough to ignore sloshing mid-shot.</p>
+              </div>
+              <div class="rcol">
+                <span class="k">Shipped</span>
+                <ul>
+                  <li>Non-contact sensor on the reservoir wall — zero plumbing changes.</li>
+                  <li>Telegram alerts, interactive commands, configurable heartbeat.</li>
+                  <li>5-min polling · 1-min debounce · WiFi auto-reconnect.</li>
+                </ul>
+              </div>
+              <div class="rcol">
+                <span class="k">Measured</span>
+                <p>Empty state caught within one cycle. Zero false alarms in 30 days. Heartbeat proves it's alive.</p>
+              </div>
+            </div>
+
+            <div class="term">
+              <div class="term-bar"><span>SIMULATOR — drain the tank</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="term-body">
+                <div class="tank-wrap">
+                  <div class="tank">
+                    <span class="tank-label mono">Reservoir</span>
+                    <div class="tank-water" id="tankWater"></div>
+                    <span class="tank-pct" id="tankPct">86%</span>
+                  </div>
+                  <div class="tank-side">
+                    <div class="tank-log" id="tankLog"></div>
+                    <div class="tank-actions">
+                      <button class="chip" id="btnShot">▸ pull a shot</button>
+                      <button class="chip" id="btnRefill">↻ refill tank</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="case-foot">
-            <span class="stack-line mono">Stack — <b>C++ · ESP32 · PlatformIO · Telegram Bot API</b></span>
-            <a class="lnk" href="https://github.com/yuvalcohenrappaport/water_sensor" target="_blank" rel="noopener">GitHub <span class="ar">→</span></a>
+            <div class="report-foot">STACK — <b>C++ · ESP32 · PlatformIO · Telegram Bot API</b></div>
           </div>
         </article>
+      </div>
+    </section>
 
-        <!-- Workshop ledger -->
-        <div class="ledger rv">
-          <div class="ledger-head mono">Also in the workshop</div>
-          <a class="ledger-row" href="https://github.com/yuvalcohenrappaport/Portfolio_risk_managment" target="_blank" rel="noopener">
-            <span class="t">Portfolio Risk Analytics</span>
-            <span class="kind mono">Finance · Data</span>
-            <span class="stk">Python · pandas · Plotly · yfinance</span>
-            <span class="go">→</span>
-          </a>
-          <a class="ledger-row" href="https://github.com/yuvalcohenrappaport/Laser_beam_profiling" target="_blank" rel="noopener">
-            <span class="t">Laser Beam Profiling</span>
-            <span class="kind mono">Physics · Imaging</span>
-            <span class="stk">Python · NumPy · SciPy</span>
-            <span class="go">→</span>
-          </a>
-          <a class="ledger-row" href="https://github.com/yuvalcohenrappaport?tab=repositories" target="_blank" rel="noopener">
-            <span class="t">Claude Code Skills</span>
-            <span class="kind mono">Developer Tools · AI</span>
-            <span class="stk">Server security · 3D printing · PM tooling</span>
-            <span class="go">→</span>
-          </a>
-          <a class="ledger-row" href="https://github.com/yuvalcohenrappaport/claude-skill-mac-audit" target="_blank" rel="noopener">
-            <span class="t">Mac Audit Skill</span>
-            <span class="kind mono">Automation · Maintenance</span>
-            <span class="stk">7-phase cleanup · Trash-only deletes</span>
-            <span class="go">→</span>
-          </a>
+    <!-- ================= OPERATOR FILE ================= -->
+    <section class="sec" id="operator">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="no">02</span>
+          <h2>Operator file</h2>
+          <div class="rule"></div>
+          <span class="aside">Who runs this</span>
+        </div>
+        <div class="op-grid rv">
+          <div class="op-bio">
+            <p class="big">A product manager who ships like a <span class="amber">small team.</span></p>
+            <p>I'm a PM based in Tel Aviv, specialized in integrating AI into the product lifecycle — for faster iteration, sharper discovery, and prototypes that become products. Before going independent I directed ground-up development of a B2B SaaS platform turning raw IoT data into product features, with clients in 10+ countries.</p>
+            <p>The systems on the map aren't side projects in the usual sense. They're how I work: <b>find a real problem, ship the smallest thing that solves it, instrument it, let the data decide.</b> The café platform upstairs has a kill-switch metric. So should most roadmaps.</p>
+            <p>Physics taught me to decompose problems. Philosophy taught me to question the framing. The army taught me to decide under pressure. AI lets one person do all three at production speed.</p>
+            <div class="op-train mono">
+              <span class="y">2021–24</span> &nbsp;<b>B.A. Physics &amp; Philosophy</b> — Tel Aviv University<br>
+              <span class="y">2019–20</span> &nbsp;<b>MCSA</b> — systems administration, John Bryce<br>
+              <span class="y">2016–19</span> &nbsp;<b>Commander, Reconnaissance Unit</b> — IDF
+            </div>
+          </div>
+          <div class="op-caps">
+            <div class="op-cap"><span class="n">01</span><span class="t">Product management</span><span class="d">Discovery → roadmap → delivery → measurement. Owning the whole loop.</span></div>
+            <div class="op-cap"><span class="n">02</span><span class="t">AI-first workflow</span><span class="d">AI in every phase of the lifecycle — not as a feature, as a method.</span></div>
+            <div class="op-cap"><span class="n">03</span><span class="t">Data analysis</span><span class="d">Python, SQL, dashboards people actually open. Ask the right question first.</span></div>
+            <div class="op-cap"><span class="n">04</span><span class="t">Cross-functional leadership</span><span class="d">Engineering, design, client success — international accounts, 10+ countries.</span></div>
+            <div class="op-cap"><span class="n">05</span><span class="t">Technical depth</span><span class="d">From REST APIs to embedded firmware. Enough to prototype alone and speak fluent engineer.</span></div>
+            <div class="op-cap"><span class="n">06</span><span class="t">Systems thinking</span><span class="d">If it can be automated, connected, or measured — it will be. See: the map.</span></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= CAPABILITIES ================= -->
-    <section class="sec" id="capabilities">
+    <!-- ================= SERVICE HISTORY ================= -->
+    <section class="sec" id="history">
       <div class="wrap">
         <div class="sec-head rv">
-          <span class="sec-no mono">§02</span>
-          <h2 class="sec-title">Capabilities</h2>
-          <span class="sec-aside mono">What I bring to the table</span>
-        </div>
-        <div class="caps rv">
-          <div class="cap"><span class="cap-no">/ 01</span><span class="cap-name">Product management</span><p class="cap-desc">End-to-end lifecycle — user research, roadmap planning, delivery measurement. Comfortable owning a domain from problem framing to launch.</p></div>
-          <div class="cap"><span class="cap-no">/ 02</span><span class="cap-name">AI automation</span><p class="cap-desc">Leveraging AI tools for prototyping, automating workflows, and integrating intelligence into the product lifecycle — not as a feature, as a method.</p></div>
-          <div class="cap"><span class="cap-no">/ 03</span><span class="cap-name">Data analysis</span><p class="cap-desc">Turning raw data into actionable insight. Reports, dashboards, decisions — Python, SQL, and the discipline to ask the right question first.</p></div>
-          <div class="cap"><span class="cap-no">/ 04</span><span class="cap-name">Problem solving</span><p class="cap-desc">Physics-trained analytical mindset, paired with philosophical reasoning. Decompose, hypothesize, test, decide.</p></div>
-          <div class="cap"><span class="cap-no">/ 05</span><span class="cap-name">Cross-functional leadership</span><p class="cap-desc">Coordinating engineering, design, and client success — international clients across 10+ countries.</p></div>
-          <div class="cap"><span class="cap-no">/ 06</span><span class="cap-name">Programming</span><p class="cap-desc">Python, SQL, JavaScript. Comfortable from data pipelines to embedded firmware — enough to prototype alone and speak fluent engineer.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= EXPERIENCE ================= -->
-    <section class="sec" id="experience">
-      <div class="wrap">
-        <div class="sec-head rv">
-          <span class="sec-no mono">§03</span>
-          <h2 class="sec-title">Experience</h2>
-          <span class="sec-aside mono">Changelog</span>
+          <span class="no">03</span>
+          <h2>Service history</h2>
+          <div class="rule"></div>
+          <span class="aside">Roles</span>
         </div>
 
-        <div class="xp rv">
-          <div class="xp-when mono">Nov 2025 — <span class="now">present</span></div>
+        <div class="svc rv">
+          <div class="svc-when">NOV 2025 — <span class="now">PRESENT</span></div>
           <div>
-            <h3 class="xp-role">Independent Product Manager &amp; Automation Consultant</h3>
-            <div class="xp-org mono">Self-employed · Tel Aviv</div>
-            <p class="xp-sum">Building and shipping AI-powered automation tools for local businesses — strategy, scoping, prototyping, measurement.</p>
-            <ul class="xp-bullets">
+            <h3>Independent Product Manager &amp; Automation Consultant</h3>
+            <div class="org">Self-employed · Tel Aviv</div>
+            <p>Building and shipping AI-powered automation tools for local businesses — strategy, scoping, prototyping, measurement.</p>
+            <ul>
               <li>Led end-to-end product strategy for a web-based automation platform, from problem framing through launch and measurement.</li>
               <li>Used AI to analyze recurring customer pain points, sharpening discovery and prioritization on live user feedback.</li>
-              <li>Architected and shipped a portfolio of AI-powered tools currently in daily use — turning conceptual MVPs into functional realities.</li>
+              <li>Shipped a portfolio of AI-powered tools currently in daily use — turning conceptual MVPs into functional realities.</li>
             </ul>
           </div>
         </div>
 
-        <div class="xp rv">
-          <div class="xp-when mono">Jan 2020 — Dec 2021</div>
+        <div class="svc rv">
+          <div class="svc-when">JAN 2020 — DEC 2021</div>
           <div>
-            <h3 class="xp-role">Product Manager &amp; Client Success Associate</h3>
-            <div class="xp-org mono">Agrint</div>
-            <p class="xp-sum">Directed ground-up development of a B2B SaaS platform turning raw IoT data into actionable product features.</p>
-            <ul class="xp-bullets">
+            <h3>Product Manager &amp; Client Success Associate</h3>
+            <div class="org">Agrint</div>
+            <p>Directed ground-up development of a B2B SaaS platform turning raw IoT data into actionable product features.</p>
+            <ul>
               <li>Owned an end-to-end product domain — led engineers and designers through ideation, execution, and launch.</li>
               <li>Managed global accounts across 10+ countries, bridging client feedback and internal development cycles.</li>
               <li>Built Python/SQL data reports giving business units real-time performance insights.</li>
@@ -827,61 +742,26 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
       </div>
     </section>
 
-    <!-- ================= EDUCATION ================= -->
-    <section class="sec" id="education">
-      <div class="wrap">
-        <div class="sec-head rv">
-          <span class="sec-no mono">§04</span>
-          <h2 class="sec-title">Foundations</h2>
-          <span class="sec-aside mono">Education &amp; service</span>
-        </div>
-        <div class="edu-grid rv">
-          <div class="edu">
-            <span class="when mono">2021 — 2024</span>
-            <div class="what">B.A. Physics &amp; Philosophy</div>
-            <div class="where">Tel Aviv University</div>
-            <p>Quantitative reasoning through advanced physics coursework and experimental analysis with Python; independent research integrating empirical evidence with conceptual analysis.</p>
-          </div>
-          <div class="edu">
-            <span class="when mono">2019 — 2020</span>
-            <div class="what">MCSA Certification</div>
-            <div class="where">John Bryce College</div>
-            <p>Microsoft Certified Solutions Associate — systems administration foundations.</p>
-          </div>
-          <div class="edu">
-            <span class="when mono">2016 — 2019</span>
-            <div class="what">Commander, Reconnaissance Unit</div>
-            <div class="where">IDF</div>
-            <p>Operated in high-pressure environments requiring decision-making under pressure.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= CONTACT ================= -->
-    <section class="contact" id="contact">
-      <div class="wrap contact-in">
-        <div class="sec-head">
-          <span class="sec-no mono">§05</span>
-          <span class="sec-aside mono">Final page of the dossier</span>
-        </div>
-        <div class="contact-grid">
+    <!-- ================= CHANNEL ================= -->
+    <section class="channel" id="contact">
+      <div class="wrap channel-in">
+        <div class="channel-grid">
           <div>
-            <h2>Let's build <em>something.</em></h2>
-            <p class="contact-pitch">If you're hiring, building something interesting, or want to compare notes on AI-driven product workflows — say hi.</p>
+            <h2>Open a<br><span class="amber">channel.</span></h2>
+            <p class="channel-pitch">If you're hiring, building something interesting, or want to compare notes on AI-driven product workflows — my inbox is the one system on the map with a human in the loop.</p>
             <a class="mail-link" href="mailto:yuvalc79@gmail.com">yuvalc79@gmail.com <span class="ar">→</span></a>
-            <div class="contact-avail"><i></i><span class="mono">Tel Aviv District · available for new roles</span></div>
+            <div class="channel-avail"><i></i>Tel Aviv District · available for new roles</div>
           </div>
-          <nav class="contact-rows" aria-label="Contact channels">
-            <a class="c-row" href="tel:+972508311220"><span class="k mono">Phone</span><span class="v">+972 50-831-1220</span></a>
-            <a class="c-row" href="https://www.linkedin.com/in/yuval-cohen-rappaport-b779851b2" target="_blank" rel="noopener"><span class="k mono">LinkedIn</span><span class="v">/yuval-cohen-rappaport</span></a>
-            <a class="c-row" href="https://github.com/yuvalcohenrappaport" target="_blank" rel="noopener"><span class="k mono">GitHub</span><span class="v">@yuvalcohenrappaport</span></a>
+          <nav class="c-rows" aria-label="Contact channels">
+            <a class="c-row" href="tel:+972508311220"><span class="k">Phone</span><span class="v">+972 50-831-1220</span></a>
+            <a class="c-row" href="https://www.linkedin.com/in/yuval-cohen-rappaport-b779851b2" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">/yuval-cohen-rappaport</span></a>
+            <a class="c-row" href="https://github.com/yuvalcohenrappaport" target="_blank" rel="noopener"><span class="k">GitHub</span><span class="v">@yuvalcohenrappaport</span></a>
           </nav>
         </div>
-        <div class="foot mono">
-          <span>© <span id="yr">2026</span> Yuval Cohen Rappaport</span>
-          <span>Typeset like a spec sheet — naturally</span>
-          <span>Rev 4.0 · Tel Aviv</span>
+        <div class="foot">
+          <span>© <span id="yr">2026</span> YUVAL.SYS — Yuval Cohen Rappaport</span>
+          <span class="truth">One HTML file. No framework, no CMS — served from the home server on the map, through a Cloudflare tunnel.</span>
+          <span>UPTIME: SINCE NOV 2025</span>
         </div>
       </div>
     </section>
@@ -893,37 +773,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    /* ---------- scroll reveals ---------- */
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
-
-    /* ---------- Exhibit A: WhatsApp inbox simulator ---------- */
-    var chat = document.getElementById('waChat');
-    var chips = document.getElementById('waChips');
-    var scenarios = [
-      {
-        label: '"Dinner Thursday at 8?"',
-        me: 'Dinner Thursday at 8?',
-        sys: '✓ Event captured → Google Calendar · Thu 20:00 — Dinner',
-        bot: 'Drafted in your voice: "Sounds good, see you at 8 🙌" — approve to send.'
-      },
-      {
-        label: '"Can you send the report by Sunday?"',
-        me: 'Can you send me the report by Sunday?',
-        sys: '✓ Commitment detected → Google Tasks · "Send report" — due Sun',
-        bot: 'Drafted in your voice: "On it — you\'ll have it before Sunday." — approve to send.'
-      },
-      {
-        label: '"What time does the meetup start?"',
-        me: 'What time does the meetup start?',
-        sys: '✓ Question routed · context found in group thread',
-        bot: 'Drafted in your voice: "19:30, doors open at 19:00. Want to share a ride?"'
-      }
-    ];
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function el(tag, cls, html) {
       var n = document.createElement(tag);
@@ -931,75 +781,343 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
       if (html != null) n.innerHTML = html;
       return n;
     }
-    function scrollChat() { chat.scrollTop = chat.scrollHeight; }
 
-    function runScenario(s, btn) {
-      Array.prototype.forEach.call(chips.querySelectorAll('button'), function (b) { b.disabled = true; });
-      chat.appendChild(el('div', 'wa-msg me', s.me));
-      scrollChat();
-      var typing = el('div', 'wa-msg wa-typing', '<i></i><i></i><i></i>');
-      setTimeout(function () { chat.appendChild(typing); scrollChat(); }, 450);
-      setTimeout(function () {
-        typing.remove();
-        chat.appendChild(el('div', 'wa-msg sys', s.sys));
-        scrollChat();
-      }, 1500);
-      setTimeout(function () {
-        chat.appendChild(el('div', 'wa-msg', '<span class="tag">Assistant draft</span>' + s.bot));
-        scrollChat();
-        btn.remove();
-        Array.prototype.forEach.call(chips.querySelectorAll('button'), function (b) { b.disabled = false; });
-      }, 2300);
+    /* ============ boot overlay ============ */
+    var boot = document.getElementById('boot');
+    if (reduceMotion) {
+      boot.remove();
+    } else {
+      var card = document.getElementById('bootCard');
+      var lines = [
+        ['hd', 'YUVAL.SYS — operator console'],
+        ['', 'mounting field reports … <span class="ok">ok</span>'],
+        ['', 'attaching live nodes … <span class="ok">11/11</span>'],
+        ['', 'operator: Yuval Cohen Rappaport — Product Manager, TLV'],
+        ['', 'linking your browser to the map … <span class="ok">ok</span>']
+      ];
+      lines.forEach(function (l, i) {
+        var d = el('div', 'boot-line' + (l[0] ? ' ' + l[0] : ''), l[1]);
+        d.style.animationDelay = (0.12 + i * 0.18) + 's';
+        card.appendChild(d);
+      });
+      card.appendChild(el('div', 'boot-hint', 'click anywhere · entering in 2s'));
+      var killBoot = function () {
+        boot.classList.add('gone');
+        setTimeout(function () { boot.remove(); }, 500);
+      };
+      boot.addEventListener('click', killBoot);
+      setTimeout(killBoot, 2100);
     }
 
-    chat.appendChild(el('div', 'wa-msg', '<span class="tag">Assistant</span>Online. Watching your threads — send something and I\'ll handle it.'));
+    /* ============ TLV clock ============ */
+    function tickClock() {
+      try {
+        var t = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Jerusalem' }).format(new Date());
+        document.getElementById('clockTLV').textContent = t;
+      } catch (e) { /* old browsers: leave placeholder */ }
+    }
+    tickClock();
+    setInterval(tickClock, 30000);
+
+    /* ============ system map ============ */
+    var NODES = [
+      { id: 'server', x: 500, y: 240, w: 200, h: 96, label: 'HOME SERVER', sub: 'TLV apartment · Ubuntu', led: 'green',
+        kicker: 'CORE — always on', status: '● RUNNING · since Nov 2025',
+        body: 'A headless Linux box in my apartment running the whole operation: the WhatsApp assistant, nightly AI mission runner, job-hunt pipeline, security monitor, backups — and the web server that delivered this very page to you.',
+        stack: 'Ubuntu · Docker · PM2 · cron · Tailscale · nginx', link: '#operator', linkText: 'operator file ↓' },
+      { id: 'mac', x: 80, y: 60, w: 170, h: 76, label: 'DEV MACHINE', sub: 'where things get built', led: 'amber',
+        kicker: 'BUILD — daily driver', status: '◐ ACTIVE · work hours',
+        body: 'Where products get designed, built, and shipped — with an AI-first workflow covering discovery, prototyping, code, and deployment. Everything on this map started here.',
+        stack: 'AI-assisted development · Python · TypeScript · Figma-to-shipped', link: '#operator', linkText: 'how I work ↓' },
+      { id: 'tank', x: 80, y: 200, w: 170, h: 76, label: 'TANK SENSOR', sub: 'ESP32 · espresso machine', led: 'green',
+        kicker: 'IOT — kitchen counter', status: '● HEARTBEAT OK · polls every 5 min',
+        body: 'Capacitive sensor on the espresso machine\'s reservoir. Telegram pings me the moment the tank hits empty — before the boiler dry-fires again.',
+        stack: 'C++ · ESP32 · PlatformIO · Telegram Bot API', link: '#r-tank', linkText: 'field report 03 ↓' },
+      { id: 'plants', x: 80, y: 340, w: 170, h: 76, label: 'PLANT SENSORS', sub: 'BLE → MQTT bridge', led: 'green',
+        kicker: 'IOT — living room', status: '● MONITORING · soil + light',
+        body: 'Plant moisture sensors bridged over BLE to MQTT through the server — because the apartment WiFi isolates devices, so the server became the bridge. Constraints breed architecture.',
+        stack: 'BLE · MQTT · Python bridge · cron', link: '#operator', linkText: 'systems thinking ↓' },
+      { id: 'printer', x: 80, y: 480, w: 170, h: 76, label: '3D PRINTER', sub: 'also draws with a pen', led: 'amber',
+        kicker: 'FABRICATION — workshop', status: '◐ ON DEMAND · print + plot',
+        body: 'A Bambu A1 that prints functional parts — and, converted with a pen mount and a custom toolchain, plots generative line art on paper. CAD to G-code, automated.',
+        stack: 'Bambu A1 · custom G-code pipeline · generative art presets', link: '#operator', linkText: 'operator file ↓' },
+      { id: 'wa', x: 950, y: 60, w: 170, h: 76, label: 'WHATSAPP BOT', sub: 'drafts in my voice', led: 'green',
+        kicker: 'AI ASSISTANT — 24/7', status: '● RUNNING · PM2 on home server',
+        body: 'Watches my threads, drafts replies in my voice, extracts events to Calendar and commitments to Tasks. Human-in-the-loop: nothing sends without approval.',
+        stack: 'TypeScript · Baileys · Gemini · React 19 · SQLite', link: '#r-wa', linkText: 'field report 02 ↓' },
+      { id: 'cafe', x: 950, y: 200, w: 170, h: 76, label: 'CAFÉ PLATFORM', sub: 'real business, real users', led: 'green',
+        kicker: 'B2B SAAS — in production', status: '● LIVE · on the floor daily',
+        body: 'Loyalty competitions, staff iPad flows, owner BI dashboards with live POS telemetry — built end-to-end for an independent Tel Aviv café. Ships behind a measurable validation gate.',
+        stack: 'Python · FastAPI · PostgreSQL · React · Docker', link: '#r-cafe', linkText: 'field report 01 ↓' },
+      { id: 'jobs', x: 950, y: 340, w: 170, h: 76, label: 'JOB PIPELINE', sub: 'scrape · score · tailor', led: 'amber',
+        kicker: 'AUTOMATION — daily 07:30', status: '◐ SCHEDULED · daily run',
+        body: 'Scrapes fresh PM listings daily, scores them, and tailors a CV per match with AI. The job hunt itself is a product with a funnel — so I instrumented it.',
+        stack: 'Python · scraping · LLM pipeline · cron', link: '#operator', linkText: 'method ↓' },
+      { id: 'tg', x: 950, y: 480, w: 170, h: 76, label: 'TELEGRAM OPS', sub: 'alerts · reports · control', led: 'green',
+        kicker: 'OPS CHANNEL — always on', status: '● RUNNING · nightly reports 02:00',
+        body: 'The operations channel: tank alerts, nightly security scans, AI mission reports, deploy notifications. Every system on this map reports here. So do I.',
+        stack: 'Telegram Bot API · nightly cron fleet', link: '#operator', linkText: 'operator file ↓' },
+      { id: 'edge', x: 420, y: 480, w: 160, h: 76, label: 'CLOUDFLARE EDGE', sub: 'tunnel · WAF · TLS 1.3', led: 'green',
+        kicker: 'EDGE — zero open ports', status: '● TUNNELED · DNSSEC + HSTS',
+        body: 'This site reaches you through a Cloudflare tunnel — the apartment exposes zero inbound ports. Self-hosted doesn\'t have to mean insecure.',
+        stack: 'Cloudflare Tunnel · WAF · strict CSP · TLS 1.3', link: '#contact', linkText: 'open a channel ↓' },
+      { id: 'you', x: 660, y: 480, w: 170, h: 76, label: 'YOUR BROWSER', sub: 'joined just now', led: 'signal',
+        kicker: 'VISITOR — welcome', status: '● CONNECTED',
+        body: 'You\'re on the map now. This page travelled: home server → nginx → Cloudflare tunnel → edge → you. One HTML file, no framework, no tracking pixels doing weird things.',
+        stack: '', link: '#contact', linkText: 'say hi ↓' }
+    ];
+
+    var EDGES = [
+      ['mac', 'server'], ['tank', 'server'], ['plants', 'server'], ['printer', 'server'],
+      ['wa', 'server'], ['cafe', 'server'], ['jobs', 'server'], ['tg', 'server'],
+      ['server', 'edge'], ['edge', 'you']
+    ];
+
+    var svgNS = 'http://www.w3.org/2000/svg';
+    var gT = document.getElementById('traces');
+    var gP = document.getElementById('packets');
+    var gN = document.getElementById('nodes');
+    var byId = {};
+    NODES.forEach(function (n) { byId[n.id] = n; });
+
+    function cx(n) { return n.x + n.w / 2; }
+    function cyy(n) { return n.y + n.h / 2; }
+
+    /* orthogonal trace with rounded elbow */
+    function tracePath(a, b) {
+      var x1 = cx(a), y1 = cyy(a), x2 = cx(b), y2 = cyy(b);
+      if (Math.abs(y1 - y2) < 4) return 'M' + x1 + ' ' + y1 + ' L' + x2 + ' ' + y2;
+      if (Math.abs(x1 - x2) < 4) return 'M' + x1 + ' ' + y1 + ' L' + x2 + ' ' + y2;
+      var r = 14;
+      var sx = x2 > x1 ? 1 : -1, sy = y2 > y1 ? 1 : -1;
+      /* horizontal then vertical */
+      return 'M' + x1 + ' ' + y1 +
+             ' L' + (x2 - sx * r) + ' ' + y1 +
+             ' Q' + x2 + ' ' + y1 + ' ' + x2 + ' ' + (y1 + sy * r) +
+             ' L' + x2 + ' ' + y2;
+    }
+
+    var pathStrings = [];
+    EDGES.forEach(function (e) {
+      var p = document.createElementNS(svgNS, 'path');
+      var d = tracePath(byId[e[0]], byId[e[1]]);
+      p.setAttribute('d', d);
+      p.setAttribute('class', 'trace');
+      gT.appendChild(p);
+      pathStrings.push(d);
+    });
+
+    /* nodes */
+    var drawer = document.getElementById('drawer');
+    var activeNode = null;
+    function openNode(n, gEl) {
+      document.querySelectorAll('.node.active').forEach(function (x) { x.classList.remove('active'); });
+      gEl.classList.add('active');
+      activeNode = gEl;
+      document.getElementById('dKicker').textContent = n.kicker;
+      document.getElementById('dTitle').textContent = n.label;
+      var st = document.getElementById('dStatus');
+      st.textContent = n.status;
+      st.className = 'd-status mono' + (n.led === 'amber' ? ' amber' : '');
+      document.getElementById('dBody').textContent = n.body;
+      document.getElementById('dStack').textContent = n.stack ? 'STACK — ' + n.stack : '';
+      var lk = document.getElementById('dLink');
+      lk.setAttribute('href', n.link);
+      lk.textContent = n.linkText;
+      drawer.classList.add('open');
+      document.getElementById('mapHint').textContent = n.id.toUpperCase() + ' selected';
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      if (activeNode) activeNode.classList.remove('active');
+      activeNode = null;
+    }
+    document.getElementById('dClose').addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+
+    NODES.forEach(function (n) {
+      var g = document.createElementNS(svgNS, 'g');
+      g.setAttribute('class', 'node' + (n.id === 'you' ? ' you' : ''));
+      g.setAttribute('tabindex', '0');
+      g.setAttribute('role', 'button');
+      g.setAttribute('aria-label', n.label + ' — ' + n.sub);
+
+      var r = document.createElementNS(svgNS, 'rect');
+      r.setAttribute('class', 'box');
+      r.setAttribute('x', n.x); r.setAttribute('y', n.y);
+      r.setAttribute('width', n.w); r.setAttribute('height', n.h);
+      r.setAttribute('rx', 6);
+      g.appendChild(r);
+
+      var led = document.createElementNS(svgNS, 'circle');
+      led.setAttribute('class', 'led' + (n.led === 'amber' ? ' amber' : '') + (n.led === 'verm' ? ' verm' : ''));
+      if (n.led === 'signal') led.style.fill = 'var(--signal)';
+      led.setAttribute('cx', n.x + 16); led.setAttribute('cy', n.y + 20); led.setAttribute('r', 3.5);
+      led.style.animationDelay = (Math.abs(n.x * 7 + n.y * 13) % 200) / 100 + 's';
+      g.appendChild(led);
+
+      var t1 = document.createElementNS(svgNS, 'text');
+      t1.setAttribute('x', n.x + 28); t1.setAttribute('y', n.y + 24);
+      t1.textContent = n.label;
+      g.appendChild(t1);
+
+      var t2 = document.createElementNS(svgNS, 'text');
+      t2.setAttribute('class', 'sub');
+      t2.setAttribute('x', n.x + 16); t2.setAttribute('y', n.y + 46);
+      t2.textContent = n.sub;
+      g.appendChild(t2);
+
+      if (n.id === 'you') {
+        var t3 = document.createElementNS(svgNS, 'text');
+        t3.setAttribute('class', 'sub');
+        t3.setAttribute('x', n.x + 16); t3.setAttribute('y', n.y + 62);
+        var hr = new Date();
+        t3.textContent = 'local ' + ('0' + hr.getHours()).slice(-2) + ':' + ('0' + hr.getMinutes()).slice(-2) + ' · ' + window.innerWidth + '×' + window.innerHeight;
+        g.appendChild(t3);
+      } else {
+        var t4 = document.createElementNS(svgNS, 'text');
+        t4.setAttribute('class', 'sub');
+        t4.setAttribute('x', n.x + 16); t4.setAttribute('y', n.y + 62);
+        t4.textContent = n.kicker.split('—')[0].trim();
+        g.appendChild(t4);
+      }
+
+      g.addEventListener('click', function () { openNode(n, g); });
+      g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openNode(n, g); } });
+      gN.appendChild(g);
+    });
+
+    /* mobile node list (same drawer) */
+    var nlist = document.getElementById('nodelist');
+    NODES.forEach(function (n) {
+      var b = el('button', 'nodebtn' + (n.id === 'you' ? ' you' : ''));
+      b.appendChild(el('span', 'nl', '<i class="' + (n.led === 'amber' ? 'amber' : n.led === 'signal' ? 'signal' : '') + '"></i>' + n.label));
+      b.appendChild(el('span', 'ns', n.sub));
+      b.addEventListener('click', function () { openNode(n, b); });
+      nlist.appendChild(b);
+    });
+
+    /* packets along traces */
+    if (!reduceMotion && CSS.supports && CSS.supports('offset-path', 'path("M0 0 L10 10")')) {
+      var colors = ['', 'amber', '', '', 'amber', '', '', 'verm', '', ''];
+      pathStrings.forEach(function (d, i) {
+        var c = document.createElementNS(svgNS, 'circle');
+        c.setAttribute('class', 'packet' + (colors[i] ? ' ' + colors[i] : ''));
+        c.setAttribute('r', 3);
+        c.style.offsetPath = 'path("' + d + '")';
+        c.style.offsetRotate = '0deg';
+        gP.appendChild(c);
+        animatePacket(c, 2600 + (i % 5) * 700, i * 900);
+      });
+    }
+    function animatePacket(c, dur, delay) {
+      var anim = c.animate(
+        [
+          { offsetDistance: '0%', opacity: 0 },
+          { offsetDistance: '8%', opacity: 1 },
+          { offsetDistance: '92%', opacity: 1 },
+          { offsetDistance: '100%', opacity: 0 }
+        ],
+        { duration: dur, delay: delay, iterations: Infinity, easing: 'linear' }
+      );
+      return anim;
+    }
+
+    /* ============ event log replay ============ */
+    var EVENTS = [
+      ['02:00', 'claude-missions', 'nightly AI mission run started → report to Telegram', true],
+      ['02:14', 'bodyguard', 'security scan complete — no anomalies', true],
+      ['03:00', 'backup', '14 projects → encrypted cloud backup, 30-day retention', true],
+      ['07:30', 'job-pipeline', 'scraped 23 new PM listings · 2 CVs tailored', true],
+      ['08:05', 'cafe.platform', 'POS telemetry sync · day opened on the floor', true],
+      ['09:12', 'tank-sensor', 'heartbeat OK · reservoir 86%', true],
+      ['10:40', 'whatsapp.bot', 'commitment detected → task created', true],
+      ['12:00', 'ycrapps.deploy', 'checked origin/main · up to date', true],
+      ['13:37', 'plant-bridge', 'soil moisture nominal · next check 30m', true],
+      ['16:20', 'whatsapp.bot', 'draft approved unedited · sent', true],
+      ['21:00', 'cafe.platform', 'daily digest → owner dashboard', true]
+    ];
+    var evline = document.getElementById('evline');
+    var evIdx = 0;
+    function nextEvent() {
+      var e = EVENTS[evIdx % EVENTS.length];
+      evIdx++;
+      evline.innerHTML = '<span class="t">' + e[0] + '</span> [' + e[1] + '] ' + e[2] + (e[3] ? ' <span class="ok">✓</span>' : '');
+    }
+    nextEvent();
+    setInterval(nextEvent, 3600);
+
+    /* ============ scroll reveals ============ */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.rv').forEach(function (n) { io.observe(n); });
+
+    /* ============ whatsapp sim ============ */
+    var chat = document.getElementById('waChat');
+    var chips = document.getElementById('waChips');
+    var scenarios = [
+      { label: '"Dinner Thursday at 8?"', me: 'Dinner Thursday at 8?',
+        sys: '✓ event captured → Calendar · Thu 20:00 — dinner',
+        bot: 'Draft in your voice: “Sounds good, see you at 8 🙌” — approve to send.' },
+      { label: '"Send the report by Sunday?"', me: 'Can you send me the report by Sunday?',
+        sys: '✓ commitment detected → Tasks · “send report” — due Sun',
+        bot: 'Draft in your voice: “On it — you\'ll have it before Sunday.” — approve to send.' },
+      { label: '"What time does the meetup start?"', me: 'What time does the meetup start?',
+        sys: '✓ context found in group thread',
+        bot: 'Draft in your voice: “19:30, doors at 19:00. Want to share a ride?”' }
+    ];
+    function scrollChat() { chat.scrollTop = chat.scrollHeight; }
+    function runScenario(s, btn) {
+      Array.prototype.forEach.call(chips.querySelectorAll('button'), function (b) { b.disabled = true; });
+      chat.appendChild(el('div', 'wa-msg me', s.me)); scrollChat();
+      var typing = el('div', 'wa-msg wa-typing', '<i></i><i></i><i></i>');
+      setTimeout(function () { chat.appendChild(typing); scrollChat(); }, 420);
+      setTimeout(function () { typing.remove(); chat.appendChild(el('div', 'wa-msg sys', s.sys)); scrollChat(); }, 1400);
+      setTimeout(function () {
+        chat.appendChild(el('div', 'wa-msg', '<span class="tag">assistant draft</span>' + s.bot)); scrollChat();
+        btn.remove();
+        Array.prototype.forEach.call(chips.querySelectorAll('button'), function (b) { b.disabled = false; });
+      }, 2200);
+    }
+    chat.appendChild(el('div', 'wa-msg', '<span class="tag">assistant</span>Online. Watching threads — send something and I\'ll handle it.'));
     scenarios.forEach(function (s) {
       var b = el('button', 'chip', s.label);
       b.addEventListener('click', function () { runScenario(s, b); });
       chips.appendChild(b);
     });
 
-    /* ---------- Exhibit B: tank simulator ---------- */
+    /* ============ tank sim ============ */
     var water = document.getElementById('tankWater');
     var pct = document.getElementById('tankPct');
-    var log = document.getElementById('tankLog');
-    var btnShot = document.getElementById('btnShot');
-    var btnRefill = document.getElementById('btnRefill');
+    var tlog = document.getElementById('tankLog');
     var level = 86, alerted = false;
-
     function stamp() {
       var d = new Date();
       return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
     }
-    function render() {
-      water.style.height = level + '%';
-      pct.textContent = Math.round(level) + '%';
-    }
+    function renderTank() { water.style.height = level + '%'; pct.textContent = Math.round(level) + '%'; }
     function tgMsg(warn, html) {
       var n = el('div', 'tg-alert' + (warn ? ' warn' : ''),
         '<span class="ic">' + (warn ? '!' : '✓') + '</span><span>' + html + '<span class="t">Telegram · ' + stamp() + '</span></span>');
-      log.appendChild(n);
-      while (log.children.length > 3) log.removeChild(log.firstChild);
+      tlog.appendChild(n);
+      while (tlog.children.length > 3) tlog.removeChild(tlog.firstChild);
     }
-
-    btnShot.addEventListener('click', function () {
-      if (level <= 6) { tgMsg(true, '<b>Pump protected.</b> Tank is empty — refill before the next shot.'); return; }
-      level = Math.max(0, level - 28);
-      render();
+    document.getElementById('btnShot').addEventListener('click', function () {
+      if (level <= 6) { tgMsg(true, '<b>Pump protected.</b> Tank empty — refill first.'); return; }
+      level = Math.max(0, level - 28); renderTank();
       if (level <= 6 && !alerted) {
         alerted = true;
-        setTimeout(function () {
-          tgMsg(true, '<b>⚠ Water tank empty.</b> Refill before the next shot — boiler protection is on.');
-        }, 550);
+        setTimeout(function () { tgMsg(true, '<b>⚠ Water tank empty.</b> Refill before the next shot.'); }, 520);
       }
     });
-    btnRefill.addEventListener('click', function () {
-      level = 100; alerted = false;
-      render();
-      tgMsg(false, '<b>Tank refilled to 100%.</b> Resuming 5-minute checks. Enjoy the espresso.');
+    document.getElementById('btnRefill').addEventListener('click', function () {
+      level = 100; alerted = false; renderTank();
+      tgMsg(false, '<b>Tank refilled to 100%.</b> Resuming 5-minute checks.');
     });
-
-    render();
+    renderTank();
     tgMsg(false, '<b>Sensor online.</b> Heartbeat OK · polling every 5 min.');
   })();
   </script>
