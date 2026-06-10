@@ -516,6 +516,90 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 
 .foot { margin-top: clamp(44px, 7vh, 72px); padding: 20px 0 26px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 28px; justify-content: space-between; font-family: var(--mono); font-size: 11px; letter-spacing: .05em; color: var(--tx-mute); }
 .foot .truth { color: var(--tx-soft); }
+
+/* ============ UPTIME.DEF arcade trigger ============ */
+.arcade-trigger {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--amber); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 7px;
+  user-select: none;
+}
+.arcade-trigger::before {
+  content: ''; display: inline-block;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--amber);
+  animation: led 1.6s ease-in-out infinite;
+  flex: 0 0 auto;
+}
+.arcade-trigger:hover { border-bottom: 1px solid var(--amber-dim); }
+@media (max-width: 860px) { .arcade-trigger { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .arcade-trigger { display: none !important; } }
+
+/* ============ UPTIME.DEF overlay ============ */
+.arcade-overlay {
+  position: fixed; inset: 0; z-index: 59;
+  background: var(--bg-deep);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  display: flex; flex-direction: column;
+  font-family: var(--mono);
+}
+.arc-head {
+  padding: 18px 24px 0;
+  text-align: center;
+}
+.arc-title {
+  font-size: clamp(13px, 1.8vw, 16px); font-weight: 600;
+  letter-spacing: 0.12em; color: var(--amber);
+  text-transform: uppercase;
+}
+.arc-sub {
+  font-size: 11px; letter-spacing: 0.08em;
+  color: var(--tx-mute); text-transform: uppercase; margin-top: 4px;
+}
+.arc-hud {
+  position: absolute; top: 14px; left: 18px;
+  font-size: 11px; letter-spacing: 0.07em;
+  color: var(--tx-soft); line-height: 1.8;
+}
+.arc-int-track {
+  display: inline-block; width: 80px; height: 8px;
+  background: var(--line-2); border-radius: 3px;
+  vertical-align: middle; margin-left: 6px;
+  position: relative; overflow: hidden;
+}
+.arc-int-fill {
+  position: absolute; inset: 0 auto 0 0;
+  background: var(--green); border-radius: 3px;
+  transition: width 0.2s, background 0.3s;
+}
+.arc-hint {
+  position: absolute; bottom: 10px; left: 0; right: 0;
+  text-align: center;
+  font-size: 10px; letter-spacing: 0.09em; color: var(--tx-mute);
+  text-transform: uppercase;
+}
+.arc-canvas { position: absolute; inset: 0; display: block; }
+.arc-gameover {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(11,13,16,0.88);
+}
+.arc-go-card {
+  font-family: var(--mono); font-size: 13px;
+  color: var(--tx-soft); line-height: 2.1;
+  text-align: center;
+  padding: 32px 40px;
+  border: 1px solid var(--line-2); border-radius: 8px;
+  background: var(--bg-deep);
+  min-width: 280px;
+}
+.arc-go-card .arc-go-title { color: var(--amber); font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; }
+.arc-go-card .arc-go-score { color: var(--tx); font-size: 14px; margin-top: 6px; }
+.arc-go-btns { display: flex; gap: 12px; justify-content: center; margin-top: 18px; }
   </style>
 </head>
 <body>
@@ -558,6 +642,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
               <span><i style="background: var(--signal);"></i>you</span>
             </div>
             <span class="hint mono" id="mapHint">click a node ↓</span>
+            <span class="arcade-trigger" id="arcadeTrigger" role="button" tabindex="0" aria-label="Launch UPTIME.DEF arcade" hidden>[ ARCADE ]</span>
           </div>
 
           <div id="node-tip"><div class="tip-kicker"></div><div class="tip-status mono"></div><div class="tip-body"></div></div>
@@ -1144,6 +1229,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     });
 
     /* packets along traces */
+    var packetAnims = [];
     if (!reduceMotion && CSS.supports && CSS.supports('offset-path', 'path("M0 0 L10 10")')) {
       var colors = ['', 'amber', '', '', 'amber', '', '', 'verm', '', ''];
       pathStrings.forEach(function (d, i) {
@@ -1153,9 +1239,10 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
         c.style.offsetPath = 'path("' + d + '")';
         c.style.offsetRotate = '0deg';
         gP.appendChild(c);
-        animatePacket(c, 2600 + (i % 5) * 700, i * 900);
+        packetAnims.push(animatePacket(c, 2600 + (i % 5) * 700, i * 900));
       });
     }
+    window.__yuvalPacketAnims = packetAnims;
     function animatePacket(c, dur, delay) {
       var anim = c.animate(
         [
@@ -1265,6 +1352,356 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     });
     renderTank();
     tgMsg(false, '<b>Sensor online.</b> Heartbeat OK · polling every 5 min.');
+  })();
+
+  /* ============================================================
+     UPTIME.DEF — OPERATOR DEFENSE PROTOCOL (arcade easter egg)
+     ============================================================ */
+  (function () {
+    'use strict';
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var trigger = document.getElementById('arcadeTrigger');
+
+    /* ---- idle reveal ---- */
+    var idleTimer = null;
+    var revealed = false;
+    function revealTrigger() {
+      if (revealed || reduceMotion || window.innerWidth <= 860) return;
+      revealed = true;
+      trigger.hidden = false;
+    }
+    function resetIdle() {
+      if (revealed) return;
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(revealTrigger, 10000);
+    }
+    if (!reduceMotion && window.innerWidth > 860) {
+      ['mousemove', 'scroll', 'keydown', 'pointerdown'].forEach(function (ev) {
+        window.addEventListener(ev, resetIdle, { passive: true });
+      });
+      resetIdle();
+    }
+
+    /* ---- state ---- */
+    var state = 'idle';
+    var overlay = null, rafId = 0;
+    var onKeyDown = null, onKeyUp = null, onVisibility = null, onResize = null;
+    var canvas = null, ctx = null;
+    var paused = false;
+
+    /* ---- game data ---- */
+    var INCIDENTS = [
+      { label: '502 BAD GATEWAY', sev: 'verm' },
+      { label: 'BOILER DRY FIRE', sev: 'amber' },
+      { label: 'STOCK EXPIRED', sev: 'amber' },
+      { label: 'COMMIT MISSED', sev: 'verm' },
+      { label: 'BOT SURGE +440%', sev: 'verm' },
+      { label: 'DISK 97% FULL', sev: 'amber' },
+      { label: 'MISSION TIMEOUT', sev: 'verm' },
+      { label: 'SESSION LOST', sev: 'amber' }
+    ];
+
+    var keys = {}, player = {}, lasers = [], rects = [], flashes = [], plusOnes = [];
+    var score = 0, hits = 0, integrity = 100, spawnTimer = 0, lastTs = 0, graceTimer = 0;
+    var hudScore = null, hudIntFill = null, hudIntPct = null, goCard = null;
+
+    function cssVar(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    /* ---- drawRect helper ---- */
+    function drawRect(x, y, w, h, r, fill, stroke, sw) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+      if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+      if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = sw || 1; ctx.stroke(); }
+    }
+
+    /* ---- drawLED helper ---- */
+    function drawLED(x, y, color) {
+      ctx.beginPath();
+      ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+
+    /* ---- init player ---- */
+    function initPlayer() {
+      player = { x: canvas.width / 2 - 60, y: canvas.height - 60, w: 120, h: 40, speed: 4 };
+    }
+
+    /* ---- reset game state ---- */
+    function resetGame() {
+      score = 0; hits = 0; integrity = 100;
+      lasers = []; rects = []; flashes = []; plusOnes = [];
+      spawnTimer = 0; lastTs = 0; graceTimer = 0;
+      initPlayer();
+      updateHUD();
+      if (goCard) { goCard.remove(); goCard = null; }
+    }
+
+    /* ---- spawn rect ---- */
+    function spawnRect() {
+      var inc = INCIDENTS[Math.floor(Math.random() * INCIDENTS.length)];
+      var speed = Math.min(150, 60 + Math.floor(hits / 10) * 18);
+      var x = 40 + Math.random() * (canvas.width - 120);
+      rects.push({ x: x, y: -30, w: 80, h: 30, label: inc.label, sev: inc.sev, speed: speed, ledPhase: Math.random() * Math.PI * 2 });
+    }
+
+    /* ---- update HUD ---- */
+    function updateHUD() {
+      if (!hudScore) return;
+      hudScore.textContent = 'SCORE — ' + score;
+      var pct = Math.max(0, integrity);
+      hudIntFill.style.width = pct + '%';
+      hudIntFill.style.background = pct <= 20 ? cssVar('--verm') : pct <= 50 ? cssVar('--amber') : cssVar('--green');
+      hudIntPct.textContent = pct + '%';
+    }
+
+    /* ---- game over ---- */
+    function showGameOver() {
+      state = 'gameover';
+      goCard = document.createElement('div');
+      goCard.className = 'arc-gameover';
+      goCard.innerHTML = '<div class="arc-go-card">' +
+        '<div class="arc-go-title">SYSTEM INTEGRITY: 0%</div>' +
+        '<div style="color:var(--tx-mute);letter-spacing:.08em;margin-top:4px;font-size:11px;text-transform:uppercase">UPTIME.DEF — TERMINATED</div>' +
+        '<div class="arc-go-score" style="margin-top:14px">SCORE ' + score + '</div>' +
+        '<div class="arc-go-score">EVENTS SURVIVED ' + hits + '</div>' +
+        '<div class="arc-go-btns">' +
+        '<button class="chip" id="arcRestart" style="border-color:var(--amber)">[ RESTART ]</button>' +
+        '<button class="chip" id="arcReturn" style="border-color:var(--line-2)">[ RETURN TO MAP ]</button>' +
+        '</div></div>';
+      overlay.appendChild(goCard);
+      goCard.querySelector('#arcRestart').addEventListener('click', function () {
+        resetGame();
+        state = 'playing';
+        if (!rafId) rafId = requestAnimationFrame(loop);
+      });
+      goCard.querySelector('#arcReturn').addEventListener('click', exitGame);
+    }
+
+    /* ---- RAF loop ---- */
+    function loop(ts) {
+      if (state === 'idle') return;
+      rafId = requestAnimationFrame(loop);
+      if (paused || state === 'gameover') return;
+
+      var dt = Math.min((ts - (lastTs || ts)) / 1000, 0.1);
+      lastTs = ts;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      /* grace */
+      graceTimer += dt;
+
+      /* move player */
+      if (keys['ArrowLeft']) player.x = Math.max(0, player.x - player.speed * 60 * dt);
+      if (keys['ArrowRight']) player.x = Math.min(canvas.width - player.w, player.x + player.speed * 60 * dt);
+
+      /* spawn rects */
+      spawnTimer += dt;
+      if (graceTimer > 1 && spawnTimer > 2.5) { spawnTimer = 0; spawnRect(); }
+
+      /* move rects */
+      for (var ri = rects.length - 1; ri >= 0; ri--) {
+        rects[ri].y += rects[ri].speed * dt;
+        if (rects[ri].y > canvas.height - 20) {
+          rects.splice(ri, 1);
+          integrity -= 10;
+          updateHUD();
+          if (integrity <= 0) { integrity = 0; updateHUD(); cancelAnimationFrame(rafId); rafId = 0; showGameOver(); return; }
+        }
+      }
+
+      /* move lasers */
+      for (var li = lasers.length - 1; li >= 0; li--) {
+        lasers[li].y -= 420 * dt;
+        if (lasers[li].y < -20) lasers.splice(li, 1);
+      }
+
+      /* collision */
+      for (var li2 = lasers.length - 1; li2 >= 0; li2--) {
+        var la = lasers[li2];
+        for (var ri2 = rects.length - 1; ri2 >= 0; ri2--) {
+          var re = rects[ri2];
+          if (la.x >= re.x && la.x <= re.x + re.w && la.y >= re.y && la.y <= re.y + re.h) {
+            flashes.push({ x: re.x, y: re.y, w: re.w, h: re.h, t: 0 });
+            plusOnes.push({ x: re.x + re.w / 2, y: re.y, t: 0, alpha: 1 });
+            rects.splice(ri2, 1);
+            lasers.splice(li2, 1);
+            score++; hits++;
+            updateHUD();
+            break;
+          }
+        }
+      }
+
+      /* draw flashes */
+      for (var fi = flashes.length - 1; fi >= 0; fi--) {
+        flashes[fi].t += dt;
+        if (flashes[fi].t > 0.15) { flashes.splice(fi, 1); continue; }
+        ctx.globalAlpha = 1 - flashes[fi].t / 0.15;
+        drawRect(flashes[fi].x, flashes[fi].y, flashes[fi].w, flashes[fi].h, 6, cssVar('--verm-soft'), null, 0);
+        ctx.globalAlpha = 1;
+      }
+
+      /* draw rects */
+      var vermColor = cssVar('--verm'), amberColor = cssVar('--amber');
+      rects.forEach(function (re) {
+        var sc = re.sev === 'verm' ? vermColor : amberColor;
+        drawRect(re.x, re.y, re.w, re.h, 6, cssVar('--panel-2'), sc, 1.5);
+        var ledAlpha = 0.25 + 0.75 * (0.5 + 0.5 * Math.sin(ts / 400 + re.ledPhase));
+        ctx.globalAlpha = ledAlpha;
+        drawLED(re.x + 10, re.y + re.h / 2, sc);
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = cssVar('--tx');
+        ctx.font = '600 9px ' + cssVar('--mono');
+        ctx.fillText(re.label, re.x + 20, re.y + re.h / 2 + 4);
+      });
+
+      /* draw lasers */
+      var signalColor = cssVar('--signal');
+      lasers.forEach(function (la) {
+        ctx.fillStyle = signalColor;
+        ctx.shadowColor = signalColor;
+        ctx.shadowBlur = la.glow > 0 ? 8 : 0;
+        la.glow = Math.max(0, (la.glow || 80) - dt * 1000);
+        ctx.fillRect(la.x - 1, la.y, 2, 20);
+        ctx.shadowBlur = 0;
+      });
+
+      /* draw player */
+      var greenColor = cssVar('--green');
+      drawRect(player.x, player.y, player.w, player.h, 6, cssVar('--panel-2'), amberColor, 1.5);
+      var ledA = 0.25 + 0.75 * (0.5 + 0.5 * Math.sin(ts / 600));
+      ctx.globalAlpha = ledA; drawLED(player.x + 12, player.y + player.h / 2, greenColor); ctx.globalAlpha = 1;
+      ctx.fillStyle = cssVar('--tx');
+      ctx.font = '600 10px ' + cssVar('--mono');
+      ctx.fillText('HOME SERVER', player.x + 24, player.y + player.h / 2 + 4);
+
+      /* draw +1 popups */
+      for (var pi = plusOnes.length - 1; pi >= 0; pi--) {
+        plusOnes[pi].t += dt;
+        plusOnes[pi].alpha = Math.max(0, 1 - plusOnes[pi].t / 0.5);
+        if (plusOnes[pi].alpha <= 0) { plusOnes.splice(pi, 1); continue; }
+        ctx.globalAlpha = plusOnes[pi].alpha;
+        ctx.fillStyle = greenColor;
+        ctx.font = '600 11px ' + cssVar('--mono');
+        ctx.fillText('+1', plusOnes[pi].x, plusOnes[pi].y - plusOnes[pi].t * 40);
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    /* ---- fire laser ---- */
+    var lastFire = 0;
+    function fireLaser() {
+      var now = Date.now();
+      if (now - lastFire < 200) return;
+      lastFire = now;
+      lasers.push({ x: player.x + player.w / 2, y: player.y, glow: 80 });
+    }
+
+    /* ---- enter/exit ---- */
+    function enterGame() {
+      if (state !== 'idle') return;
+
+      overlay = document.createElement('div');
+      overlay.className = 'arcade-overlay';
+
+      canvas = document.createElement('canvas');
+      canvas.className = 'arc-canvas';
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      ctx = canvas.getContext('2d');
+      overlay.appendChild(canvas);
+
+      var head = document.createElement('div');
+      head.className = 'arc-head';
+      head.innerHTML = '<div class="arc-title">UPTIME.DEF — OPERATOR DEFENSE PROTOCOL</div><div class="arc-sub">system integrity under threat</div>';
+      overlay.appendChild(head);
+
+      var hud = document.createElement('div');
+      hud.className = 'arc-hud';
+      hud.innerHTML = '<div id="arcScore">SCORE — 0</div><div>INTEGRITY — <span class="arc-int-track"><span class="arc-int-fill" id="arcIntFill"></span></span> <span id="arcIntPct">100%</span></div>';
+      overlay.appendChild(hud);
+
+      var hint = document.createElement('div');
+      hint.className = 'arc-hint';
+      hint.textContent = 'ARROWS — MOVE   SPACE — FIRE   ESC — EXIT';
+      overlay.appendChild(hint);
+
+      document.body.appendChild(overlay);
+
+      hudScore = document.getElementById('arcScore');
+      hudIntFill = document.getElementById('arcIntFill');
+      hudIntPct = document.getElementById('arcIntPct');
+
+      (window.__yuvalPacketAnims || []).forEach(function (a) { a.pause(); });
+
+      onKeyDown = function (e) {
+        if (e.key === 'Escape') { exitGame(); return; }
+        if (state !== 'playing') return;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === ' ') e.preventDefault();
+        keys[e.key] = true;
+        if (e.key === ' ') fireLaser();
+      };
+      onKeyUp = function (e) { keys[e.key] = false; };
+      onVisibility = function () {
+        if (document.hidden) {
+          paused = true;
+          cancelAnimationFrame(rafId); rafId = 0;
+        } else if (state === 'playing') {
+          paused = false; lastTs = 0;
+          rafId = requestAnimationFrame(loop);
+        }
+      };
+      onResize = function () {
+        if (!canvas) return;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initPlayer();
+      };
+
+      document.addEventListener('keydown', onKeyDown);
+      document.addEventListener('keyup', onKeyUp);
+      document.addEventListener('visibilitychange', onVisibility);
+      window.addEventListener('resize', onResize);
+
+      resetGame();
+      state = 'playing';
+      rafId = requestAnimationFrame(loop);
+    }
+
+    function exitGame() {
+      cancelAnimationFrame(rafId); rafId = 0;
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('keyup', onKeyUp);
+      document.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('resize', onResize);
+      if (overlay) { overlay.remove(); overlay = null; }
+      canvas = null; ctx = null; goCard = null;
+      keys = {};
+      (window.__yuvalPacketAnims || []).forEach(function (a) { a.play(); });
+      state = 'idle';
+    }
+
+    /* ---- wire trigger ---- */
+    trigger.addEventListener('click', enterGame);
+    trigger.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); enterGame(); }
+    });
+
   })();
   </script>
 </body>
