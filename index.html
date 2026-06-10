@@ -172,7 +172,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     padding-block: 8px;
     gap: 8px;
   }
-  .uptime { font-size: 10px; }
+  .uptime { display: none; }
 }
 
 /* ============ Console hero ============ */
@@ -647,7 +647,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
             <div class="report-cols">
               <div class="rcol">
                 <span class="k">Insight</span>
-                <p>The critical moment is when it hits empty — debounced enough to ignore sloshing mid-shot. You don't need a level gauge.</p>
+                <p>The critical moment is when it hits empty. You don't need a level gauge.</p>
               </div>
               <div class="rcol">
                 <span class="k">Shipped</span>
@@ -700,7 +700,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
         </div>
         <div class="op-grid rv">
           <div class="op-bio">
-            <p class="big">A product manager who ships like a <span class="amber">small team.</span></p>
+            <p class="big">Ships like a <span class="amber">small team.</span> Thinks like a system.</p>
             <p>I'm a PM based in Tel Aviv. I take products from zero to measured — discovery, build, instrument, decide. Before going independent I directed ground-up development of a B2B SaaS platform turning raw IoT data into product features, with clients in 10+ countries.</p>
             <p>The systems on the map aren't side projects in the usual sense. They're how I work: <b>find a real problem, ship the smallest thing that solves it, instrument it, let the data decide.</b> The café platform upstairs has a kill-switch metric. So should most roadmaps.</p>
             <div class="op-train mono">
@@ -886,7 +886,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
         stack: 'Cloudflare Tunnel · WAF · strict CSP · TLS 1.3', link: '#contact', linkText: 'open a channel ↓' },
       { id: 'you', x: 660, y: 480, w: 170, h: 76, label: 'YOUR BROWSER', sub: 'joined just now', led: 'signal',
         kicker: 'VISITOR — welcome', status: '● CONNECTED',
-        body: 'You\'re on the map now. This page travelled: home server → nginx → Cloudflare tunnel → edge → you. One HTML file, no framework, no tracking pixels doing weird things.',
+        body: 'You\'re on the map now. This page travelled: home server → nginx → Cloudflare tunnel → edge → you.',
         stack: '', link: '#contact', linkText: 'say hi ↓' }
     ];
 
