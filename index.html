@@ -501,7 +501,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
       <div class="wrap">
         <div class="console-head">
           <h1>I build products like<br><span class="amber">infrastructure:</span><br>shipped, monitored,<br>measured.</h1>
-          <p class="console-sub"><b>Yuval Cohen Rappaport — Product Manager.</b> While Tel Aviv sleeps, my systems work. The map below is not a metaphor — <span class="mono-inline">it's my apartment.</span> Click any node.</p>
+          <p class="console-sub"><b>Yuval Cohen Rappaport — Product Manager.</b> The map below is real. These are the systems running in my apartment right now. The map below is not a metaphor — <span class="mono-inline">it's my apartment.</span> Click any node.</p>
         </div>
 
         <div class="map-shell">
@@ -780,7 +780,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
         <div class="foot">
           <span>© <span id="yr">2026</span> YUVAL.SYS — Yuval Cohen Rappaport</span>
           <span class="truth">One HTML file. No framework, no CMS — served from the home server on the map, through a Cloudflare tunnel.</span>
-          <span>UPTIME: SINCE NOV 2025</span>
+          <span>IN OPERATION SINCE NOV 2025</span>
         </div>
       </div>
     </section>
@@ -845,7 +845,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     /* ============ system map ============ */
     var NODES = [
       { id: 'server', x: 500, y: 240, w: 200, h: 96, label: 'HOME SERVER', sub: 'TLV apartment · Ubuntu', led: 'green',
-        kicker: 'CORE — always on', status: '● RUNNING · since Nov 2025',
+        kicker: 'CORE — always on', status: '● RUNNING · always on',
         body: 'A headless Linux box in my apartment running the whole operation: the WhatsApp assistant, nightly AI mission runner, job-hunt pipeline, security monitor, backups — and the web server that delivered this very page to you.',
         stack: 'Ubuntu · Docker · PM2 · cron · Tailscale · nginx', link: '#operator', linkText: 'operator file ↓' },
       { id: 'mac', x: 80, y: 60, w: 170, h: 76, label: 'DEV MACHINE', sub: 'where things get built', led: 'amber',
@@ -857,7 +857,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
         body: 'Capacitive sensor on the espresso machine\'s reservoir. Telegram pings me the moment the tank hits empty — before the boiler dry-fires again.',
         stack: 'C++ · ESP32 · PlatformIO · Telegram Bot API', link: '#r-tank', linkText: 'field report 03 ↓' },
       { id: 'plants', x: 80, y: 340, w: 170, h: 76, label: 'PLANT SENSORS', sub: 'BLE → MQTT bridge', led: 'green',
-        kicker: 'IOT — living room', status: '● MONITORING · soil + light',
+        kicker: 'IOT — living room', status: '● MONITORING · soil + battery',
         body: 'Plant moisture sensors bridged over BLE to MQTT through the server — because the apartment WiFi isolates devices, so the server became the bridge. Constraints breed architecture.',
         stack: 'BLE · MQTT · Python bridge · cron', link: '#operator', linkText: 'systems thinking ↓' },
       { id: 'printer', x: 80, y: 480, w: 170, h: 76, label: '3D PRINTER', sub: 'also draws with a pen', led: 'amber',
@@ -873,8 +873,8 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
         body: 'Loyalty competitions, staff iPad flows, owner BI dashboards with live POS telemetry — built end-to-end for an independent Tel Aviv café. Ships behind a measurable validation gate.',
         stack: 'Python · FastAPI · PostgreSQL · React · Docker', link: '#r-cafe', linkText: 'field report 01 ↓' },
       { id: 'jobs', x: 950, y: 340, w: 170, h: 76, label: 'JOB PIPELINE', sub: 'scrape · score · tailor', led: 'amber',
-        kicker: 'AUTOMATION — daily 07:30', status: '◐ SCHEDULED · daily run',
-        body: 'Scrapes fresh PM listings daily, scores them, and tailors a CV per match with AI. The job hunt itself is a product with a funnel — so I instrumented it.',
+        kicker: 'AUTOMATION — daily 08:00', status: '◐ SCHEDULED · daily run',
+        body: 'Scrapes fresh PM listings daily at 08:00, then re-scores at 12:00, 16:00, and 20:00 for intraday listings. Scores them and tailors a CV per match with AI. The job hunt itself is a product with a funnel — so I instrumented it.',
         stack: 'Python · scraping · LLM pipeline · cron', link: '#operator', linkText: 'method ↓' },
       { id: 'tg', x: 950, y: 480, w: 170, h: 76, label: 'TELEGRAM OPS', sub: 'alerts · reports · control', led: 'green',
         kicker: 'OPS CHANNEL — always on', status: '● RUNNING · nightly reports 02:00',
@@ -1049,16 +1049,16 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     /* ============ event log replay ============ */
     var EVENTS = [
       ['02:00', 'claude-missions', 'nightly AI mission run started → report to Telegram', true],
-      ['02:14', 'bodyguard', 'security scan complete — no anomalies', true],
       ['03:00', 'backup', '14 projects → encrypted cloud backup, 30-day retention', true],
-      ['07:30', 'job-pipeline', 'scraped 23 new PM listings · 2 CVs tailored', true],
+      ['08:00', 'job-pipeline', 'scraped 23 new PM listings · 2 CVs tailored', true],
       ['08:05', 'cafe.platform', 'POS telemetry sync · day opened on the floor', true],
       ['09:12', 'tank-sensor', 'heartbeat OK · reservoir 86%', true],
       ['10:40', 'whatsapp.bot', 'commitment detected → task created', true],
       ['12:00', 'ycrapps.deploy', 'checked origin/main · up to date', true],
       ['13:37', 'plant-bridge', 'soil moisture nominal · next check 30m', true],
       ['16:20', 'whatsapp.bot', 'draft approved unedited · sent', true],
-      ['21:00', 'cafe.platform', 'daily digest → owner dashboard', true]
+      ['21:00', 'cafe.platform', 'daily digest → owner dashboard', true],
+      ['22:00', 'bodyguard', 'security scan complete — no anomalies', true]
     ];
     var evline = document.getElementById('evline');
     var evIdx = 0;
