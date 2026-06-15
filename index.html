@@ -578,7 +578,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .ask-think .d2{animation-delay:.2s;}
 .ask-think .d3{animation-delay:.4s;}
 @media (max-width:480px){
-  .ask-panel{right:0;left:0;bottom:0;width:100%;max-width:100%;height:calc(100vh - 56px);max-height:none;border-radius:0;border-left:0;border-right:0;}
+  .ask-panel{inset:0;width:100%;max-width:100%;height:100vh;height:100dvh;max-height:none;border-radius:0;border:0;z-index:61;}
   .ask-trigger{right:14px;bottom:14px;}
 }
   </style>
@@ -897,6 +897,17 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
       </div>
     </section>
   </main>
+
+  <!-- Ask YUVAL.SYS chat -->
+  <button class="ask-trigger" id="askTrigger" aria-haspopup="dialog" aria-expanded="false">[ ASK YUVAL.SYS ]</button>
+  <section class="ask-panel" id="askPanel" role="dialog" aria-label="Ask about Yuval" hidden>
+    <div class="ask-head"><span>YUVAL.SYS &middot; ASK ANYTHING</span><button class="ask-x" id="askClose" aria-label="Close chat">[ ESC ]</button></div>
+    <div class="ask-thread" id="askThread" aria-live="polite"></div>
+    <div class="ask-foot">
+      <textarea class="ask-input" id="askInput" rows="1" maxlength="280" placeholder="Ask about Yuval or his projects&hellip;" aria-label="Your question"></textarea>
+      <div class="ask-meta"><span class="ask-count" id="askCount">0 / 280</span><button class="ask-send" id="askSend" type="button">[&#9166; SEND]</button></div>
+    </div>
+  </section>
 
   <script>
   (function () {
@@ -1607,16 +1618,5 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     updateCount();
   })();
   </script>
-
-  <!-- Ask YUVAL.SYS chat -->
-  <button class="ask-trigger" id="askTrigger" aria-haspopup="dialog" aria-expanded="false">[ ASK YUVAL.SYS ]</button>
-  <section class="ask-panel" id="askPanel" role="dialog" aria-label="Ask about Yuval" hidden>
-    <div class="ask-head"><span>YUVAL.SYS &middot; ASK ANYTHING</span><button class="ask-x" id="askClose" aria-label="Close chat">[ ESC ]</button></div>
-    <div class="ask-thread" id="askThread" aria-live="polite"></div>
-    <div class="ask-foot">
-      <textarea class="ask-input" id="askInput" rows="1" maxlength="280" placeholder="Ask about Yuval or his projects&hellip;" aria-label="Your question"></textarea>
-      <div class="ask-meta"><span class="ask-count" id="askCount">0 / 280</span><button class="ask-send" id="askSend" type="button">[&#9166; SEND]</button></div>
-    </div>
-  </section>
 </body>
 </html>
