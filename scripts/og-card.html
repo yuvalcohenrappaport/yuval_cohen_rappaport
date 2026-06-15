@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Spline+Sans+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#101216; --bg-deep:#0B0D10; --line:#262B35; --tx:#E9E7E1;
+    --tx-mute:#6F6E68; --amber:#F5A623; --green:#5BC97C;
+    --sans:'Archivo',sans-serif; --mono:'Spline Sans Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1200px;height:630px;}
+  .card{
+    width:1200px;height:630px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(1100px 520px at 72% -12%, #1A1F29 0%, transparent 60%),
+      var(--bg);
+    padding:72px 80px;display:flex;flex-direction:column;justify-content:space-between;
+    color:var(--tx);
+  }
+  .card::before{
+    content:'';position:absolute;inset:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:34px 34px;opacity:.5;mask-image:linear-gradient(180deg,#000 0%,transparent 78%);
+  }
+  .row{position:relative;z-index:1;}
+  .top{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-weight:600;font-size:21px;letter-spacing:.12em;}
+  .top .sys{color:var(--tx);} .top .dot{color:var(--amber);}
+  .top .stat{color:var(--green);display:inline-flex;align-items:center;gap:9px;}
+  .top .led{width:11px;height:11px;border-radius:50%;background:var(--green);display:inline-block;}
+  .head{font-family:var(--sans);font-weight:800;line-height:.98;letter-spacing:-.01em;text-transform:uppercase;}
+  .head .l1{font-size:92px;color:var(--tx);}
+  .head .l2{font-size:92px;color:var(--amber);}
+  .head .l3{font-size:50px;color:var(--tx);margin-top:14px;letter-spacing:.005em;}
+  .foot{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;}
+  .foot .who{font-family:var(--sans);font-size:22px;font-weight:700;line-height:1.3;}
+  .foot .who .real{color:var(--tx-mute);font-weight:600;}
+  .foot .url{font-family:var(--mono);font-weight:600;font-size:22px;letter-spacing:.08em;color:var(--amber);margin-top:12px;}
+  .foot .tag{font-family:var(--mono);font-size:17px;letter-spacing:.1em;color:var(--tx-mute);text-transform:uppercase;text-align:right;white-space:nowrap;flex:0 0 auto;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="row top"><span class="sys">YUVAL<span class="dot">.</span>SYS</span><span class="stat"><span class="led"></span>ALL SYSTEMS NOMINAL</span></div>
+    <div class="row head">
+      <div class="l1">I build products</div>
+      <div class="l2">like infrastructure:</div>
+      <div class="l3">Shipped, monitored, measured.</div>
+    </div>
+    <div class="row foot">
+      <div>
+        <div class="who">Yuval Cohen Rappaport — Product Manager. <span class="real">Everything on the map is real.</span></div>
+        <div class="url">YCRAPPS.COM</div>
+      </div>
+      <div class="tag">Live system map · Tel Aviv</div>
+    </div>
+  </div>
+</body>
+</html>
