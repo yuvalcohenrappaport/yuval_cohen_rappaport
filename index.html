@@ -538,6 +538,53 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .arc-go-card .arc-go-title { color:var(--amber); font-size:15px; letter-spacing:.1em; text-transform:uppercase; }
 .arc-go-card .arc-go-score { color:var(--tx); font-size:14px; margin-top:6px; }
 .arc-go-btns { display:flex; gap:12px; justify-content:center; margin-top:18px; }
+
+/* ===== Ask YUVAL.SYS chat ===== */
+.ask-trigger{position:fixed;right:20px;bottom:20px;z-index:57;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--amber);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 14px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 24px rgba(0,0,0,.4);}
+.ask-trigger::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);animation:led 1.6s ease-in-out infinite;flex:0 0 auto;}
+.ask-trigger.off::before{background:var(--verm);animation:none;}
+.ask-trigger:hover{border-color:var(--amber-dim);}
+.ask-trigger[hidden]{display:none;}
+.ask-panel{position:fixed;right:20px;bottom:72px;z-index:58;width:380px;max-width:calc(100vw - 40px);height:520px;max-height:calc(100vh - 92px);display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 -1px 0 rgba(245,166,35,.25),0 12px 40px rgba(0,0,0,.5);}
+.ask-panel[hidden]{display:none;}
+.ask-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--amber);}
+.ask-head .ask-x{font-family:var(--mono);font-size:11px;color:var(--tx-mute);line-height:1;padding:2px 4px;}
+.ask-head .ask-x:hover{color:var(--tx);}
+.ask-thread{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px;}
+.ask-msg{font-size:14px;line-height:1.55;max-width:88%;word-wrap:break-word;}
+.ask-msg.you{align-self:flex-end;background:var(--line);color:var(--tx);border-radius:10px;padding:8px 11px;}
+.ask-msg.sys{align-self:flex-start;border-left:2px solid var(--signal);padding-left:10px;color:var(--tx);}
+.ask-msg.sys.warn{border-left-color:var(--amber);color:var(--amber);}
+.ask-msg.sys.dead{border-left-color:var(--verm);color:var(--verm);}
+.ask-cap{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx-mute);margin-bottom:3px;}
+.ask-msg.sys .ask-cap{color:var(--signal);}
+.ask-chips{display:flex;flex-direction:column;gap:8px;align-items:flex-start;}
+.ask-chip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--signal);background:var(--line);border:1px solid var(--line-2);border-radius:14px;padding:6px 11px;display:inline-flex;gap:7px;align-items:center;text-align:left;}
+.ask-chip:hover{border-color:var(--signal);}
+.ask-chip .tag{font-size:9px;color:var(--tx-mute);letter-spacing:.08em;flex:0 0 auto;}
+.ask-think{font-family:var(--mono);color:var(--signal);font-size:13px;letter-spacing:.2em;}
+.ask-foot{border-top:1px solid var(--line);padding:12px;}
+.ask-composer{display:flex;align-items:flex-end;gap:8px;background:var(--panel-2);border:1px solid var(--line-2);border-radius:10px;padding:6px 6px 6px 12px;transition:border-color .15s ease;}
+.ask-composer:focus-within{border-color:var(--amber);}
+.ask-composer.dead{opacity:.55;}
+.ask-input{flex:1;min-width:0;resize:none;background:transparent;color:var(--tx);border:0;padding:6px 0;font-family:var(--sans);font-size:14px;line-height:1.5;max-height:110px;}
+.ask-input:focus{outline:none;}
+.ask-input::placeholder{color:var(--tx-mute);}
+.ask-send{flex:0 0 auto;align-self:stretch;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--bg-deep);background:var(--amber);border:0;border-radius:7px;padding:0 14px;transition:background .15s ease;}
+.ask-send:hover{background:#ffba38;}
+.ask-send:disabled{color:var(--tx-mute);background:var(--line-2);cursor:default;}
+.ask-meta{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding:0 2px;}
+.ask-hint{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--tx-mute);}
+.ask-count{font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--tx-mute);}
+.ask-count.warn{color:var(--verm);}
+@keyframes askblink{0%,80%,100%{opacity:.2;}40%{opacity:1;}}
+.ask-think .d{animation:askblink 1.2s infinite;}
+.ask-think .d2{animation-delay:.2s;}
+.ask-think .d3{animation-delay:.4s;}
+@media (max-width:480px){
+  .ask-panel{inset:0;width:100%;max-width:100%;height:100vh;height:100dvh;max-height:none;border-radius:0;border:0;z-index:61;}
+  .ask-trigger{right:14px;bottom:14px;}
+}
   </style>
 </head>
 <body>
@@ -854,6 +901,20 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
       </div>
     </section>
   </main>
+
+  <!-- Ask YUVAL.SYS chat -->
+  <button class="ask-trigger" id="askTrigger" aria-haspopup="dialog" aria-expanded="false">[ ASK YUVAL.SYS ]</button>
+  <section class="ask-panel" id="askPanel" role="dialog" aria-label="Ask about Yuval" hidden>
+    <div class="ask-head"><span>YUVAL.SYS &middot; ASK ANYTHING</span><button class="ask-x" id="askClose" aria-label="Close chat">[ ESC ]</button></div>
+    <div class="ask-thread" id="askThread" aria-live="polite"></div>
+    <div class="ask-foot">
+      <div class="ask-composer" id="askComposer">
+        <textarea class="ask-input" id="askInput" rows="1" maxlength="280" placeholder="Ask about Yuval or his projects&hellip;" aria-label="Your question"></textarea>
+        <button class="ask-send" id="askSend" type="button">SEND</button>
+      </div>
+      <div class="ask-meta"><span class="ask-hint">Enter &#8629; to send &middot; Shift+Enter for newline</span><span class="ask-count" id="askCount">0 / 280</span></div>
+    </div>
+  </section>
 
   <script>
   (function () {
@@ -1469,6 +1530,99 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     }
     trigger.addEventListener('click', enterGame);
     trigger.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();enterGame();} });
+  })();
+
+  (function(){
+    'use strict';
+    var API='/api/chat', MAX=280;
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var trigger=document.getElementById('askTrigger');
+    var panel=document.getElementById('askPanel');
+    var closeBtn=document.getElementById('askClose');
+    var thread=document.getElementById('askThread');
+    var input=document.getElementById('askInput');
+    var count=document.getElementById('askCount');
+    var send=document.getElementById('askSend');
+    var sid=null, busy=false, dead=false, greeted=false;
+    try{ sid=sessionStorage.getItem('ycrSid')||null; }catch(e){}
+    var STARTERS=['What is Yuval building?','What is his stack?','Is he open to roles?'];
+
+    function now(){ var d=new Date(); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+    function scroll(){ thread.scrollTop=thread.scrollHeight; }
+
+    function addUser(text){
+      var el=document.createElement('div'); el.className='ask-msg you';
+      var cap=document.createElement('span'); cap.className='ask-cap'; cap.textContent='YOU · '+now();
+      var body=document.createElement('span'); body.textContent=text;
+      el.appendChild(cap); el.appendChild(body); thread.appendChild(el); scroll();
+    }
+    function addSys(kind){
+      var el=document.createElement('div'); el.className='ask-msg sys'+(kind?(' '+kind):'');
+      var cap=document.createElement('span'); cap.className='ask-cap'; cap.textContent='YUVAL.SYS · '+now();
+      var body=document.createElement('span');
+      el.appendChild(cap); el.appendChild(body); thread.appendChild(el); scroll(); return body;
+    }
+    function thinking(){
+      var el=document.createElement('div'); el.className='ask-msg sys';
+      var cap=document.createElement('span'); cap.className='ask-cap'; cap.textContent='YUVAL.SYS · PROCESSING';
+      var t=document.createElement('span'); t.className='ask-think';
+      t.innerHTML = reduce ? '...' : '<span class="d">▋</span><span class="d d2">▋</span><span class="d d3">▋</span>';
+      el.appendChild(cap); el.appendChild(t); thread.appendChild(el); scroll(); return el;
+    }
+    function typeOut(node,text){
+      if(reduce){ node.textContent=text; scroll(); return; }
+      var i=0; (function step(){ node.textContent=text.slice(0,i); scroll(); if(i++<text.length){ setTimeout(step,12); } })();
+    }
+    function clearChips(){ var c=thread.querySelector('.ask-chips'); if(c) c.remove(); }
+    function showChips(){
+      if(greeted) return; greeted=true;
+      var wrap=document.createElement('div'); wrap.className='ask-chips';
+      STARTERS.forEach(function(q){
+        var b=document.createElement('button'); b.className='ask-chip'; b.type='button';
+        var tag=document.createElement('span'); tag.className='tag'; tag.textContent='[SUGGESTED]';
+        var txt=document.createElement('span'); txt.textContent=q;
+        b.appendChild(tag); b.appendChild(txt);
+        b.addEventListener('click', function(){ input.value=q; updateCount(); doSend(); });
+        wrap.appendChild(b);
+      });
+      thread.appendChild(wrap); scroll();
+    }
+    function updateCount(){
+      var n=input.value.length; count.textContent=n+' / '+MAX;
+      count.className='ask-count'+(n>240?' warn':'');
+      input.style.height='auto'; input.style.height=Math.min(input.scrollHeight,110)+'px';
+    }
+    function open(){ panel.hidden=false; trigger.setAttribute('aria-expanded','true'); showChips(); setTimeout(function(){ input.focus(); },50); }
+    function close(){ panel.hidden=true; trigger.setAttribute('aria-expanded','false'); }
+    function setDead(){ dead=true; input.disabled=true; send.disabled=true; trigger.classList.add('off'); var c=document.getElementById('askComposer'); if(c) c.classList.add('dead'); }
+
+    function doSend(){
+      if(busy||dead) return;
+      var text=input.value.replace(/\s+/g,' ').trim();
+      if(!text||text.length>MAX) return;
+      clearChips(); addUser(text); input.value=''; updateCount();
+      busy=true; send.disabled=true;
+      var think=thinking();
+      fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({message:text,sessionId:sid})})
+        .then(function(res){ return res.json().then(function(data){ return {status:res.status,data:data}; }); })
+        .then(function(r){
+          if(think.parentNode) think.remove();
+          if(r.status===429){ addSys('warn').textContent='SLOW DOWN — too many questions. Try again in a moment.'; }
+          else if(r.status===503){ addSys('dead').textContent='OPERATOR OFFLINE · DAILY LIMIT REACHED'; setDead(); }
+          else if(r.data&&r.data.reply){ if(r.data.sessionId){ sid=r.data.sessionId; try{sessionStorage.setItem('ycrSid',sid);}catch(e){} } typeOut(addSys(''),r.data.reply); }
+          else { addSys('warn').textContent='SIGNAL LOST — please try again.'; }
+        })
+        .catch(function(){ if(think.parentNode) think.remove(); addSys('warn').textContent='SIGNAL LOST — please try again.'; })
+        .then(function(){ busy=false; if(!dead){ send.disabled=false; input.focus(); } });
+    }
+
+    trigger.addEventListener('click', function(){ panel.hidden ? open() : close(); });
+    closeBtn.addEventListener('click', close);
+    input.addEventListener('input', updateCount);
+    input.addEventListener('keydown', function(e){ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); doSend(); } });
+    send.addEventListener('click', doSend);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&!panel.hidden){ close(); } });
+    updateCount();
   })();
   </script>
 </body>
