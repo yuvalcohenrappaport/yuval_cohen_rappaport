@@ -563,16 +563,20 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .ask-chip:hover{border-color:var(--signal);}
 .ask-chip .tag{font-size:9px;color:var(--tx-mute);letter-spacing:.08em;flex:0 0 auto;}
 .ask-think{font-family:var(--mono);color:var(--signal);font-size:13px;letter-spacing:.2em;}
-.ask-foot{border-top:1px solid var(--line);padding:10px 12px;}
-.ask-input{width:100%;resize:none;background:var(--panel-2);color:var(--tx);border:1px solid var(--line);border-radius:8px;padding:9px 10px;font-family:var(--sans);font-size:14px;line-height:1.4;}
-.ask-input:focus{outline:none;border-color:var(--amber);}
-.ask-input:disabled{opacity:.5;}
-.ask-meta{display:flex;align-items:center;justify-content:space-between;margin-top:7px;}
+.ask-foot{border-top:1px solid var(--line);padding:12px;}
+.ask-composer{display:flex;align-items:flex-end;gap:8px;background:var(--panel-2);border:1px solid var(--line-2);border-radius:10px;padding:6px 6px 6px 12px;transition:border-color .15s ease;}
+.ask-composer:focus-within{border-color:var(--amber);}
+.ask-composer.dead{opacity:.55;}
+.ask-input{flex:1;min-width:0;resize:none;background:transparent;color:var(--tx);border:0;padding:6px 0;font-family:var(--sans);font-size:14px;line-height:1.5;max-height:110px;}
+.ask-input:focus{outline:none;}
+.ask-input::placeholder{color:var(--tx-mute);}
+.ask-send{flex:0 0 auto;align-self:stretch;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--bg-deep);background:var(--amber);border:0;border-radius:7px;padding:0 14px;transition:background .15s ease;}
+.ask-send:hover{background:#ffba38;}
+.ask-send:disabled{color:var(--tx-mute);background:var(--line-2);cursor:default;}
+.ask-meta{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding:0 2px;}
+.ask-hint{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--tx-mute);}
 .ask-count{font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--tx-mute);}
 .ask-count.warn{color:var(--verm);}
-.ask-send{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber-dim);border-radius:7px;padding:6px 12px;}
-.ask-send:hover{background:rgba(245,166,35,.1);}
-.ask-send:disabled{color:var(--tx-mute);border-color:var(--line);background:none;cursor:default;}
 @keyframes askblink{0%,80%,100%{opacity:.2;}40%{opacity:1;}}
 .ask-think .d{animation:askblink 1.2s infinite;}
 .ask-think .d2{animation-delay:.2s;}
@@ -904,8 +908,11 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     <div class="ask-head"><span>YUVAL.SYS &middot; ASK ANYTHING</span><button class="ask-x" id="askClose" aria-label="Close chat">[ ESC ]</button></div>
     <div class="ask-thread" id="askThread" aria-live="polite"></div>
     <div class="ask-foot">
-      <textarea class="ask-input" id="askInput" rows="1" maxlength="280" placeholder="Ask about Yuval or his projects&hellip;" aria-label="Your question"></textarea>
-      <div class="ask-meta"><span class="ask-count" id="askCount">0 / 280</span><button class="ask-send" id="askSend" type="button">[&#9166; SEND]</button></div>
+      <div class="ask-composer" id="askComposer">
+        <textarea class="ask-input" id="askInput" rows="1" maxlength="280" placeholder="Ask about Yuval or his projects&hellip;" aria-label="Your question"></textarea>
+        <button class="ask-send" id="askSend" type="button">SEND</button>
+      </div>
+      <div class="ask-meta"><span class="ask-hint">Enter &#8629; to send &middot; Shift+Enter for newline</span><span class="ask-count" id="askCount">0 / 280</span></div>
     </div>
   </section>
 
@@ -1583,11 +1590,11 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
     function updateCount(){
       var n=input.value.length; count.textContent=n+' / '+MAX;
       count.className='ask-count'+(n>240?' warn':'');
-      input.style.height='auto'; input.style.height=Math.min(input.scrollHeight,72)+'px';
+      input.style.height='auto'; input.style.height=Math.min(input.scrollHeight,110)+'px';
     }
     function open(){ panel.hidden=false; trigger.setAttribute('aria-expanded','true'); showChips(); setTimeout(function(){ input.focus(); },50); }
     function close(){ panel.hidden=true; trigger.setAttribute('aria-expanded','false'); }
-    function setDead(){ dead=true; input.disabled=true; send.disabled=true; trigger.classList.add('off'); }
+    function setDead(){ dead=true; input.disabled=true; send.disabled=true; trigger.classList.add('off'); var c=document.getElementById('askComposer'); if(c) c.classList.add('dead'); }
 
     function doSend(){
       if(busy||dead) return;
