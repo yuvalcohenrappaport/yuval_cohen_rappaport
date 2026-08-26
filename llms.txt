@@ -1,0 +1,24 @@
+# Yuval Cohen Rappaport — YUVAL.SYS
+
+> Product Manager based in Tel Aviv. I build products like infrastructure: shipped, monitored, measured. This site documents the products I build and operate: what each does, what it runs on, and how it's measured.
+
+## Who
+- Independent Product Manager & Automation Consultant (Nov 2025–present): AI-powered automation tools for local businesses — strategy, scoping, prototyping, measurement.
+- Previously (2020–21): Product Manager & Client Success Associate at Agrint — directed ground-up development of a B2B SaaS platform turning raw IoT data into product features, global accounts in 10+ countries.
+- B.A. Physics & Philosophy, Tel Aviv University. Ex-commander, IDF reconnaissance unit.
+- Approach: zero to measured — discovery, build, instrument, decide.
+
+## Systems
+- CAFE.PLATFORM (in production · on the floor daily) — staff-competition & BI platform an independent Tel Aviv café runs on: live sales competitions on the bar iPad tied to real inventory so expiring stock sells first, owner dashboards on live POS telemetry. Releases ship behind a validation gate: measurable sales lift and expiry-waste reduction over a six-week window decide validate / pivot / kill. Python · FastAPI · PostgreSQL · React · Docker.
+- WHATSAPP.BOT (running 24/7 · home server) — an assistant that answers WhatsApp in my voice: voice-matched drafting from chat history with an approval dashboard, commitment detection into Google Tasks/Calendar. Drafts approved without edits >70%. TypeScript · Baileys · Gemini · React 19 · SQLite.
+- TANK.SENSOR (deployed · kitchen counter) — the espresso machine that texts me: capacitive sensor + ESP32 + Telegram alerts when the tank runs empty. Zero false alarms in 30 days. C++ · ESP32 · PlatformIO.
+
+## Skills
+Product management (discovery → roadmap → delivery → measurement) · AI-first workflow · data analysis (Python, SQL) · cross-functional leadership across 10+ countries · technical depth from REST APIs to embedded firmware · systems thinking.
+
+## Contact
+- Site: https://ycrapps.com/ — includes ASK YUVAL.SYS
+- Phone: +972 50-831-1220
+- LinkedIn: https://www.linkedin.com/in/yuval-cohen-rappaport-b779851b2
+- GitHub: https://github.com/yuvalcohenrappaport
+- Tel Aviv District · available for new roles
